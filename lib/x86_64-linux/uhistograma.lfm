@@ -1,0 +1,171 @@
+object frmHistograma: TfrmHistograma
+  Left = 342
+  Height = 340
+  Top = 39
+  Width = 759
+  Caption = 'Histograma'
+  ClientHeight = 340
+  ClientWidth = 759
+  DesignTimePPI = 115
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '3.4.0.0'
+  object bAplicar: TButton
+    Left = 776
+    Height = 47
+    Top = 220
+    Width = 195
+    Caption = 'Aplicar'
+    TabOrder = 0
+    OnClick = bAplicarClick
+  end
+  object bCerrar: TButton
+    Left = 776
+    Height = 47
+    Top = 278
+    Width = 195
+    Caption = 'Cerrar'
+    TabOrder = 1
+    OnClick = bCerrarClick
+  end
+  object imgHisto: TImage
+    Left = 29
+    Height = 278
+    Top = 20
+    Width = 719
+  end
+  object Label1: TLabel
+    Left = 288
+    Height = 30
+    Top = 307
+    Width = 243
+    Caption = 'T  o  n  o  s     d e    g  r  i  s'
+  end
+  object Label2: TLabel
+    Left = 10
+    Height = 30
+    Top = 58
+    Width = 11
+    Caption = 'F'
+  end
+  object Label3: TLabel
+    Left = 10
+    Height = 30
+    Top = 77
+    Width = 9
+    Caption = 'r'
+  end
+  object Label4: TLabel
+    Left = 10
+    Height = 30
+    Top = 96
+    Width = 12
+    Caption = 'e'
+  end
+  object Label5: TLabel
+    Left = 10
+    Height = 30
+    Top = 115
+    Width = 10
+    Caption = 'c'
+  end
+  object Label6: TLabel
+    Left = 10
+    Height = 30
+    Top = 134
+    Width = 13
+    Caption = 'u'
+  end
+  object Label7: TLabel
+    Left = 10
+    Height = 30
+    Top = 153
+    Width = 12
+    Caption = 'e'
+  end
+  object Label8: TLabel
+    Left = 10
+    Height = 30
+    Top = 172
+    Width = 13
+    Caption = 'n'
+  end
+  object Label9: TLabel
+    Left = 11
+    Height = 30
+    Top = 192
+    Width = 10
+    Caption = 'c'
+  end
+  object Label10: TLabel
+    Left = 13
+    Height = 30
+    Top = 211
+    Width = 5
+    Caption = 'i'
+  end
+  object Label11: TLabel
+    Left = 11
+    Height = 30
+    Top = 230
+    Width = 12
+    Caption = 'a'
+  end
+  object Label12: TLabel
+    Left = 25
+    Height = 30
+    Top = 307
+    Width = 12
+    Caption = '0'
+  end
+  object Label13: TLabel
+    Left = 738
+    Height = 30
+    Top = 307
+    Width = 36
+    Caption = '255'
+  end
+  object GroupBox1: TGroupBox
+    Left = 805
+    Height = 181
+    Top = 19
+    Width = 134
+    Caption = 'Canales'
+    ClientHeight = 150
+    ClientWidth = 132
+    TabOrder = 2
+    object chkRojo: TCheckBox
+      Left = 19
+      Height = 34
+      Top = 10
+      Width = 70
+      Caption = 'Rojo'
+      TabOrder = 0
+    end
+    object chkVerde: TCheckBox
+      Left = 19
+      Height = 34
+      Top = 48
+      Width = 83
+      Caption = 'Verde'
+      TabOrder = 1
+    end
+    object chkAzul: TCheckBox
+      Left = 19
+      Height = 34
+      Top = 86
+      Width = 67
+      Caption = 'Azul'
+      TabOrder = 2
+    end
+    object chkGris: TCheckBox
+      Left = 19
+      Height = 34
+      Top = 125
+      Width = 65
+      Caption = 'Gris'
+      TabOrder = 3
+    end
+  end
+end

@@ -1,0 +1,106 @@
+object frmImagen: TfrmImagen
+  Left = 481
+  Height = 504
+  Top = 457
+  Width = 609
+  Caption = 'IMAGEN'
+  ClientHeight = 504
+  ClientWidth = 609
+  DesignTimePPI = 115
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  LCLVersion = '3.4.0.0'
+  object ScrollBox1: TScrollBox
+    Left = 10
+    Height = 426
+    Top = 10
+    Width = 466
+    HorzScrollBar.Page = 451
+    VertScrollBar.Page = 411
+    ClientHeight = 411
+    ClientWidth = 451
+    TabOrder = 0
+    object Image1: TImage
+      Left = 0
+      Height = 432
+      Top = 0
+      Width = 456
+      ParentShowHint = False
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 528
+    Top = 336
+    object mnuArchivo: TMenuItem
+      Caption = 'Archivo'
+      object mnuArchivoAbrir: TMenuItem
+        Caption = 'Abrir'
+        OnClick = mnuArchivoAbrirClick
+      end
+      object mnuArchivoGuardar: TMenuItem
+        Caption = 'Guardar'
+        OnClick = mnuArchivoGuardarClick
+      end
+      object mnuArchivoSalir: TMenuItem
+        Caption = 'Salir'
+        OnClick = mnuArchivoSalirClick
+      end
+    end
+    object MenuItem5: TMenuItem
+      Caption = 'Editar'
+      object MenuItem10: TMenuItem
+        Caption = 'Deshacer'
+        OnClick = MenuItem10Click
+      end
+      object MenuItem11: TMenuItem
+        Caption = 'Rehacer'
+        OnClick = MenuItem11Click
+      end
+    end
+    object MenuItem6: TMenuItem
+      Caption = 'Ver'
+      object MenuItem7: TMenuItem
+        Caption = 'Redimensionar'
+        OnClick = MenuItem7Click
+      end
+    end
+    object mnuHerramientas: TMenuItem
+      Caption = 'Herramientas'
+      object mnuHerrHistograma: TMenuItem
+        Caption = 'Histograma'
+        OnClick = mnuHerrHistogramaClick
+      end
+    end
+    object MenuItem1: TMenuItem
+      Caption = 'O. Puntuales'
+      object MenuItem2: TMenuItem
+        Caption = 'Negativo'
+        OnClick = MenuItem2Click
+      end
+      object MenuItem3: TMenuItem
+        Caption = 'Gris'
+        OnClick = MenuItem3Click
+      end
+      object MenuItem4: TMenuItem
+        Caption = 'RGB a gris'
+        OnClick = MenuItem4Click
+      end
+      object MenuItem8: TMenuItem
+        Caption = 'Filtro gama'
+        OnClick = MenuItem8Click
+      end
+      object MenuItem9: TMenuItem
+        Caption = 'Umbral'
+        OnClick = MenuItem9Click
+      end
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 528
+    Top = 259
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 528
+    Top = 192
+  end
+end
