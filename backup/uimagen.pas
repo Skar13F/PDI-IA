@@ -318,6 +318,7 @@ end;
 //Negativo
 procedure TfrmImagen.MenuItem2Click(Sender: TObject);
 begin
+  BM.Assign(imagenes[currentImageIndex]);
   Iancho:=BM.Width;
   Ialto:=BM.Height;
   BM_MAT(BM,MTR);
@@ -328,6 +329,7 @@ end;
 //Gris
 procedure TfrmImagen.MenuItem3Click(Sender: TObject);
 begin
+  BM.Assign(imagenes[currentImageIndex]);
   Iancho:=BM.Width;
   Ialto:=BM.Height;
   BM_MAT(BM,MTR);
@@ -338,6 +340,7 @@ end;
 //Gris RGB
 procedure TfrmImagen.MenuItem4Click(Sender: TObject);
 begin
+  BM.Assign(imagenes[currentImageIndex]);
   Iancho:=BM.Width;
   Ialto:=BM.Height;
   BM_MAT(BM,MTR);
@@ -358,6 +361,7 @@ begin
   frmGamma.ShowModal;
   if frmGamma.ModalResult = mrOK then
   begin
+    BM.Assign(imagenes[currentImageIndex]);
     gam:=frmGamma.g;
     Iancho:=BM.Width;
     Ialto:=BM.Height;
@@ -379,6 +383,7 @@ begin
   umbralStr := InputBox('Configuración de Umbral', 'Introduzca el umbral (0-255):', '128');
   if TryStrToInt(umbralStr, umbral) and (umbral >= 0) and (umbral <= 255) then
   begin
+    BM.Assign(imagenes[currentImageIndex]);
     sentidoStr := InputBox('Configuración de Sentido', 'Introduzca 1 para invertido, 0 para normal:', '0');
     sentido := (sentidoStr = '1');
 

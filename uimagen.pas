@@ -19,6 +19,7 @@ type
     MenuItem1: TMenuItem;
     MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
+    MenuItem12: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -46,6 +47,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem11Click(Sender: TObject);
+    procedure MenuItem12Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -313,6 +315,17 @@ begin
   begin
     ShowMessage('No hay imágenes para rehacer.');
   end;
+end;
+//-------------------------------------------------------------------Logarítmico
+procedure TfrmImagen.MenuItem12Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  FPLogarit(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
 end;
 
 //Negativo

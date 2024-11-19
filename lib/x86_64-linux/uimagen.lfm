@@ -97,6 +97,10 @@ object frmImagen: TfrmImagen
         Caption = 'Umbral'
         OnClick = MenuItem9Click
       end
+      object MenuItem12: TMenuItem
+        Caption = 'Logarítmico'
+        OnClick = MenuItem12Click
+      end
     end
   end
   object OpenDialog1: TOpenDialog

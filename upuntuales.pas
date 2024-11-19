@@ -16,6 +16,8 @@ const
   procedure AplicaLut(var M1 : Mat3D; var M2 : Mat3D; mc, nr : Integer; T :  ArrLam);
 
   procedure FPUmbral(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer; sentido: Boolean; p1: Integer);
+
+  procedure FPLogarit(var M1 : Mat3D; var M2 : Mat3D; mc, nr : Integer);
 implementation
 
 var
@@ -119,7 +121,17 @@ begin
     end;
   end;
 end;
-
+//Función logaritmica
+procedure FPLogarit(var M1 : Mat3D; var M2 : Mat3D; mc, nr : Integer);
+var
+  k : Integer;
+begin
+  //
+  SetLength(M2, mc, nr, 3);
+  for k:=1 to Lam  do
+    Tabla[k] := Round((Lam/ln(Lam+1))*ln(k+1));
+  AplicaLut(M1, M2, mc,  nr, Tabla);
+end;
 
 end.
 

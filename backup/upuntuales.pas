@@ -109,7 +109,7 @@ begin
           M2[i][j][0] := 255;
           M2[i][j][1] := 255;
           M2[i][j][2] := 255; // Blanco
-        end;
+        end
       else
         begin
           M2[i][j][0] := 0;
