@@ -37,6 +37,12 @@ type
     SaveDialog1: TSaveDialog;
     ScrollBox1: TScrollBox;
     procedure FormCreate(Sender: TObject);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Image1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer
+      );
+    procedure Image1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem11Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
@@ -51,13 +57,17 @@ type
     procedure MImagen (B : TBitMap; add : Boolean = true);
     procedure mnuHerrHistogramaClick(Sender: TObject);
   private
+    FSelecting: Boolean;
+    FStartPoint, FEndPoint: TPoint; // Coordenadas de inicio y fin del rectángulo
+    FSelectionRect: TRect; // Rectángulo de selección
+
     { private declarations }
   public
     { public declarations }
     BM : TBitMap;
-    imagenes : array of TBitMap;// guardar las versiones de la imagen --------------------
+    imagenes : array of TBitMap;//Para deshacer
     currentImageIndex : Integer;
-    imagenesRehacer: array of TBitMap;  // Arreglo para el historial de rehacer
+    imagenesRehacer: array of TBitMap;// Para rehacer
 
     Iancho, Ialto : integer;
     imagen : TPicture;
@@ -128,14 +138,88 @@ begin
   BM := TBitmap.Create;
   BA := TBitmap.Create;
   currentImageIndex := -1;
+
+  Image1.OnMouseDown := @Image1MouseDown;
+  Image1.OnMouseMove := @Image1MouseMove;
+  Image1.OnMouseUp := @Image1MouseUp;
+end;
+
+procedure TfrmImagen.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  if Button = mbLeft then
+  begin
+    FSelecting := True;
+    FStartPoint := Point(X, Y);
+    FEndPoint := FStartPoint;
+  end;
+end;
+
+procedure TfrmImagen.Image1MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  if FSelecting then
+  begin
+    FEndPoint := Point(X, Y);
+
+    // Redibujar el rectángulo de selección
+    Image1.Picture.Bitmap.Canvas.DrawFocusRect(FSelectionRect); // Borra el anterior
+    FSelectionRect := Rect(FStartPoint.X, FStartPoint.Y, FEndPoint.X, FEndPoint.Y);
+    Image1.Picture.Bitmap.Canvas.DrawFocusRect(FSelectionRect);
+  end;
+end;
+
+procedure TfrmImagen.Image1MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+var
+  SelectedBitmap: TBitmap;
+  RectWidth, RectHeight: Integer;
+begin
+  if FSelecting then
+  begin
+    FSelecting := False;
+    FEndPoint := Point(X, Y);
+
+    // Ajustar el rectángulo final
+    FSelectionRect := Rect(FStartPoint.X, FStartPoint.Y, FEndPoint.X, FEndPoint.Y);
+    NormalizeRect(FSelectionRect); // Asegura que los límites del rectángulo sean correctos
+
+    // Verificar dimensiones del rectángulo
+    RectWidth := FSelectionRect.Right - FSelectionRect.Left;
+    RectHeight := FSelectionRect.Bottom - FSelectionRect.Top;
+
+    if (RectWidth > 0) and (RectHeight > 0) then
+    begin
+      // Crear un bitmap con la región seleccionada
+      SelectedBitmap := TBitmap.Create;
+      try
+        SelectedBitmap.Width := RectWidth;
+        SelectedBitmap.Height := RectHeight;
+        SelectedBitmap.Canvas.CopyRect(
+          Rect(0, 0, RectWidth, RectHeight),
+          Image1.Picture.Bitmap.Canvas,
+          FSelectionRect
+        );
+
+        // Mostrar el recorte en la imagen original (o en otra ventana)
+        MImagen(SelectedBitmap);
+      finally
+        SelectedBitmap.Free;
+      end;
+    end
+    else
+    begin
+      // Si no hay selección válida, muestra un mensaje o simplemente ignora
+      ShowMessage('No se seleccionó una región válida.');
+    end;
+  end;
 end;
 
 procedure TfrmImagen.MenuItem10Click(Sender: TObject);
 begin
-  // Verifica si hay imágenes anteriores y que no estemos en la posición inicial
   if currentImageIndex > 0 then
   begin
-    // Agrega la imagen actual al historial de rehacer antes de deshacer
+    // Agrega la imagen actual al historial de rehacer
     SetLength(imagenesRehacer, Length(imagenesRehacer) + 1);
     imagenesRehacer[High(imagenesRehacer)] := imagenes[currentImageIndex];
 
@@ -161,11 +245,10 @@ begin
     SetLength(imagenes, Length(imagenes) + 1);
     imagenes[High(imagenes)] := imagenesRehacer[High(imagenesRehacer)];
 
-    // Asigna la imagen al Bitmap y muestra la imagen
     BM.Assign(imagenesRehacer[High(imagenesRehacer)]);
     MImagen(BM, false);
 
-    // Elimina la imagen del historial de rehacer
+    // Elimina la imagen del historial
     if Length(imagenesRehacer)>0 then
       SetLength(imagenesRehacer, Length(imagenesRehacer) - 1);
   end

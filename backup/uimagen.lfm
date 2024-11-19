@@ -1,10 +1,10 @@
 object frmImagen: TfrmImagen
-  Left = 481
-  Height = 504
-  Top = 457
+  Left = 581
+  Height = 542
+  Top = 453
   Width = 609
   Caption = 'IMAGEN'
-  ClientHeight = 504
+  ClientHeight = 542
   ClientWidth = 609
   DesignTimePPI = 115
   Menu = MainMenu1
@@ -25,6 +25,9 @@ object frmImagen: TfrmImagen
       Height = 432
       Top = 0
       Width = 456
+      OnMouseDown = Image1MouseDown
+      OnMouseMove = Image1MouseMove
+      OnMouseUp = Image1MouseUp
       ParentShowHint = False
     end
   end

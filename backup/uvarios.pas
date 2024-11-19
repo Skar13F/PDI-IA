@@ -9,6 +9,7 @@ uses
 type
    Mat3D = array of array of array of byte;
    ArrInt = array [0..3, 0..255] of LongWord;
+   ArrLam = array [0..255] of byte;
 
    procedure BM_MAT (var B : TBitMap; var M : Mat3D);
    procedure MAT_BM(var M : Mat3D; var B : TBitMap; nc,nr : integer);

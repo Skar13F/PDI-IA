@@ -13,6 +13,7 @@ type
 
    procedure BM_MAT (var B : TBitMap; var M : Mat3D);
    procedure MAT_BM(var M : Mat3D; var B : TBitMap; nc,nr : integer);
+   procedure NormalizeRect(var R: TRect);
 
 Var
    BA : TBitMap;
@@ -71,6 +72,26 @@ begin
   B.Assign(t);
   t.Free;
 end;
+
+procedure NormalizeRect(var R: TRect);
+var
+  Temp: Integer;
+begin
+  if R.Left > R.Right then
+  begin
+    Temp := R.Left;
+    R.Left := R.Right;
+    R.Right := Temp;
+  end;
+
+  if R.Top > R.Bottom then
+  begin
+    Temp := R.Top;
+    R.Top := R.Bottom;
+    R.Bottom := Temp;
+  end;
+end;
+
 
 end.
 
