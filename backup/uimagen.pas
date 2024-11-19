@@ -37,6 +37,7 @@ type
     SaveDialog1: TSaveDialog;
     ScrollBox1: TScrollBox;
     procedure FormCreate(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
     procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure Image1MouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer
@@ -144,6 +145,66 @@ begin
   Image1.OnMouseUp := @Image1MouseUp;
 end;
 
+// Obtener perfil de intensidad
+procedure TfrmImagen.Image1Click(Sender: TObject);
+var
+  ClickY: Integer;
+  SelectedBitmap: TBitmap;
+  RectWidth, RectHeight: Integer;
+  SelectionRect: TRect;
+begin
+  if Image1.Picture.Bitmap = nil then
+  begin
+    ShowMessage('No hay imagen cargada.');
+    Exit;
+  end;
+
+  if (Image1.Picture.Bitmap <> nil) and (currentImageIndex >= 0) then
+  begin
+    Image1.Picture.Assign(imagenes[currentImageIndex]);
+  end;
+
+  // Determina la posición del clic en el eje Y
+  ClickY := Mouse.CursorPos.Y - Image1.ClientOrigin.Y;
+
+  // Define las dimensiones del rectángulo
+  RectWidth := Image1.Picture.Bitmap.Width;
+  RectHeight := 10; // Altura fija de 10 píxeles
+
+  // Ajusta el rectángulo para que no exceda los límites de la imagen
+  if ClickY + RectHeight > Image1.Picture.Bitmap.Height then
+    ClickY := Image1.Picture.Bitmap.Height - RectHeight;
+
+  SelectionRect := Rect(0, ClickY, RectWidth, ClickY + RectHeight);
+
+  // Crea un nuevo bitmap con las dimensiones seleccionadas
+  SelectedBitmap := TBitmap.Create;
+  try
+    SelectedBitmap.Width := RectWidth;
+    SelectedBitmap.Height := RectHeight;
+
+    // Copia la sección seleccionada de la imagen original
+    SelectedBitmap.Canvas.CopyRect(
+      Rect(0, 0, RectWidth, RectHeight),
+      Image1.Picture.Bitmap.Canvas,
+      SelectionRect
+    );
+
+    // Muestra el recorte en el componente Image1 o úsalo para operaciones futuras
+    BM.Assign(SelectedBitmap); // Actualiza la imagen mostrada
+
+    with Image1.Picture.Bitmap.Canvas do
+      begin
+        Brush.Color := clBlue;  // Establece el color de relleno en azul
+        Brush.Style := bsSolid; // Establece el estilo de relleno sólido
+        FillRect(SelectionRect); // Rellena el rectángulo con el color azul
+      end;
+  finally
+    SelectedBitmap.Free;
+  end;
+end;
+
+
 procedure TfrmImagen.Image1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
@@ -207,14 +268,10 @@ begin
         SelectedBitmap.Free;
       end;
     end
-    else
-    begin
-      // Si no hay selección válida, muestra un mensaje o simplemente ignora
-      ShowMessage('No se seleccionó una región válida.');
-    end;
   end;
 end;
 
+//deshacer
 procedure TfrmImagen.MenuItem10Click(Sender: TObject);
 begin
   if currentImageIndex > 0 then
@@ -235,7 +292,7 @@ begin
   end;
 end;
 
-
+// -- Rehacer
 procedure TfrmImagen.MenuItem11Click(Sender: TObject);
 begin
   if Length(imagenesRehacer) > 0 then
