@@ -41,6 +41,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PintaHisto();
+    procedure UpdateHistogram(Bitmap: TBitmap);
   private
     { private declarations }
   public
@@ -188,6 +189,30 @@ begin
       imgHisto.Canvas.LineTo(round(i * Han/255), Hal-round(fac*HH[3,i]));
   end;
 end;
+
+procedure TfrmHistograma.UpdateHistogram(Bitmap: TBitmap);
+begin
+  if (Bitmap = nil) or (Bitmap.Empty) then
+  begin
+    ShowMessage('No se recibió una región válida para el histograma.');
+    Exit;
+  end;
+
+  // Asigna la nueva región seleccionada al bitmap del histograma
+  BH.Assign(Bitmap);
+
+  // Actualiza los valores de las dimensiones
+  //nc := BH.Width;
+  //nr := BH.Height;
+
+  // Convierte la imagen en matriz
+  //BM_MAT(BH, MH);
+  bAplicarClick();
+  // Dibuja el histograma
+  PintaHisto();
+end;
+
+
 
 end.
 
