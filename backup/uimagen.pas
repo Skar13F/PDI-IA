@@ -57,6 +57,7 @@ type
     procedure mnuArchivoSalirClick(Sender: TObject);
     procedure MImagen (B : TBitMap; add : Boolean = true);
     procedure mnuHerrHistogramaClick(Sender: TObject);
+    procedure frmHistogramaClosed(Sender: TObject; var CloseAction: TCloseAction);
   private
     FSelecting: Boolean;
     FStartPoint, FEndPoint: TPoint; // Coordenadas de inicio y fin del rectángulo
@@ -153,6 +154,9 @@ var
   RectWidth, RectHeight: Integer;
   SelectionRect: TRect;
 begin
+  if frmHistograma.Visible = false then
+    Exit;
+
   if Image1.Picture.Bitmap = nil then
   begin
     ShowMessage('No hay imagen cargada.');
@@ -192,6 +196,7 @@ begin
 
     // Muestra el recorte en el componente Image1 o úsalo para operaciones futuras
     BM.Assign(SelectedBitmap); // Actualiza la imagen mostrada
+    BA.Assign(SelectedBitmap);
 
     with Image1.Picture.Bitmap.Canvas do
       begin
@@ -199,6 +204,7 @@ begin
         Brush.Style := bsSolid; // Establece el estilo de relleno sólido
         FillRect(SelectionRect); // Rellena el rectángulo con el color azul
       end;
+    TfrmHistograma.UpdateHistogram(BA);
   finally
     SelectedBitmap.Free;
   end;
@@ -318,6 +324,7 @@ end;
 //Negativo
 procedure TfrmImagen.MenuItem2Click(Sender: TObject);
 begin
+  BM.Assign(imagenes[currentImageIndex]);
   Iancho:=BM.Width;
   Ialto:=BM.Height;
   BM_MAT(BM,MTR);
@@ -328,6 +335,7 @@ end;
 //Gris
 procedure TfrmImagen.MenuItem3Click(Sender: TObject);
 begin
+  BM.Assign(imagenes[currentImageIndex]);
   Iancho:=BM.Width;
   Ialto:=BM.Height;
   BM_MAT(BM,MTR);
@@ -338,6 +346,7 @@ end;
 //Gris RGB
 procedure TfrmImagen.MenuItem4Click(Sender: TObject);
 begin
+  BM.Assign(imagenes[currentImageIndex]);
   Iancho:=BM.Width;
   Ialto:=BM.Height;
   BM_MAT(BM,MTR);
@@ -358,6 +367,7 @@ begin
   frmGamma.ShowModal;
   if frmGamma.ModalResult = mrOK then
   begin
+    BM.Assign(imagenes[currentImageIndex]);
     gam:=frmGamma.g;
     Iancho:=BM.Width;
     Ialto:=BM.Height;
@@ -379,6 +389,7 @@ begin
   umbralStr := InputBox('Configuración de Umbral', 'Introduzca el umbral (0-255):', '128');
   if TryStrToInt(umbralStr, umbral) and (umbral >= 0) and (umbral <= 255) then
   begin
+    BM.Assign(imagenes[currentImageIndex]);
     sentidoStr := InputBox('Configuración de Sentido', 'Introduzca 1 para invertido, 0 para normal:', '0');
     sentido := (sentidoStr = '1');
 
@@ -424,8 +435,19 @@ end;
 //Se muestra la ventana del Histograma
 procedure TfrmImagen.mnuHerrHistogramaClick(Sender: TObject);
 begin
+  frmHistograma.OnClose := @frmHistogramaClosed;
   BA.Assign(frmImagen.Image1.Picture.Bitmap);
   frmHistograma.Show;
 end;
+
+procedure TfrmImagen.frmHistogramaClosed(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  if Assigned(BM) then
+  begin
+    // Restaura la imagen anterior
+    Image1.Picture.Bitmap.Assign(imagenes[currentImageIndex]);
+  end;
+end;
+
 end.
 
