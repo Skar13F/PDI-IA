@@ -204,7 +204,7 @@ begin
         Brush.Style := bsSolid; // Establece el estilo de relleno sólido
         FillRect(SelectionRect); // Rellena el rectángulo con el color azul
       end;
-    TfrmHistograma.UpdateHistogram(BA);
+    frmHistograma.UpdateHistogram(BA);
   finally
     SelectedBitmap.Free;
   end;

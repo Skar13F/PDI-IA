@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="7">
+    <Units Count="8">
       <Unit0>
         <Filename Value="pImagen.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -77,6 +77,13 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uUmbral"/>
       </Unit6>
+      <Unit7>
+        <Filename Value="ucalculadora.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCalculadora"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCalculadora"/>
+      </Unit7>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

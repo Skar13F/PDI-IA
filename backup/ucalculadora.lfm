@@ -1,0 +1,92 @@
+object frmCalculadora: TfrmCalculadora
+  Left = 2122
+  Height = 324
+  Top = 156
+  Width = 1238
+  Caption = 'Calculadora'
+  ClientHeight = 324
+  ClientWidth = 1238
+  DesignTimePPI = 115
+  LCLVersion = '3.4.0.0'
+  object cmbOperaciones: TComboBox
+    Left = 328
+    Height = 47
+    Top = 128
+    Width = 192
+    ItemHeight = 0
+    Items.Strings = (
+      'Suma 1'
+      'Suma 2'
+      'Resta  1'
+      'Resta 2'
+      'Resta 3'
+      'Rflx. H'
+      'Rflx. V'
+      'Rflx. Doble'
+      'A <-- R'
+      'B <-- R'
+      'A<-> B'
+    )
+    ReadOnly = True
+    TabOrder = 0
+    Text = 'Operación'
+  end
+  object ScrollBox1: TScrollBox
+    Left = 64
+    Height = 188
+    Top = 48
+    Width = 220
+    HorzScrollBar.Page = 205
+    VertScrollBar.Page = 173
+    ClientHeight = 173
+    ClientWidth = 205
+    TabOrder = 1
+    object Image1: TImage
+      Left = 0
+      Height = 188
+      Top = 0
+      Width = 216
+    end
+  end
+  object ScrollBox2: TScrollBox
+    Left = 544
+    Height = 192
+    Top = 48
+    Width = 236
+    HorzScrollBar.Page = 221
+    VertScrollBar.Page = 177
+    ClientHeight = 177
+    ClientWidth = 221
+    TabOrder = 2
+    object Image2: TImage
+      Left = 0
+      Height = 192
+      Top = 0
+      Width = 240
+    end
+  end
+  object ScrollBox3: TScrollBox
+    Left = 920
+    Height = 188
+    Top = 48
+    Width = 216
+    HorzScrollBar.Page = 201
+    VertScrollBar.Page = 173
+    ClientHeight = 173
+    ClientWidth = 201
+    TabOrder = 3
+    object Image3: TImage
+      Left = 0
+      Height = 180
+      Top = 0
+      Width = 216
+    end
+  end
+  object Label1: TLabel
+    Left = 840
+    Height = 30
+    Top = 128
+    Width = 12
+    Caption = '='
+  end
+end

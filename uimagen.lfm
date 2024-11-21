@@ -1,11 +1,11 @@
 object frmImagen: TfrmImagen
-  Left = 1274
-  Height = 618
-  Top = 238
-  Width = 609
+  Left = 1172
+  Height = 470
+  Top = 250
+  Width = 619
   Caption = 'IMAGEN'
-  ClientHeight = 618
-  ClientWidth = 609
+  ClientHeight = 470
+  ClientWidth = 619
   DesignTimePPI = 115
   Menu = MainMenu1
   OnCreate = FormCreate
@@ -73,6 +73,10 @@ object frmImagen: TfrmImagen
       object mnuHerrHistograma: TMenuItem
         Caption = 'Histograma'
         OnClick = mnuHerrHistogramaClick
+      end
+      object MenuItem12: TMenuItem
+        Caption = 'Calculadora'
+        OnClick = MenuItem12Click
       end
     end
     object MenuItem1: TMenuItem

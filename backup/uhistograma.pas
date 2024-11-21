@@ -201,13 +201,7 @@ begin
   // Asigna la nueva región seleccionada al bitmap del histograma
   BH.Assign(Bitmap);
 
-  // Actualiza los valores de las dimensiones
-  //nc := BH.Width;
-  //nr := BH.Height;
-
-  // Convierte la imagen en matriz
-  //BM_MAT(BH, MH);
-  bAplicarClick();
+  bAplicarClick(Self);
   // Dibuja el histograma
   PintaHisto();
 end;
