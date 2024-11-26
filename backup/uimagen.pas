@@ -7,7 +7,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
-  ExtCtrls, uVarios, uHistograma, uPuntuales, uGamma;
+  ExtCtrls, uVarios, uHistograma, uPuntuales, uGamma, uCalculadora;
 
 type
 
@@ -19,6 +19,7 @@ type
     MenuItem1: TMenuItem;
     MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
+    MenuItem12: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -46,6 +47,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem11Click(Sender: TObject);
+    procedure MenuItem12Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -319,6 +321,11 @@ begin
   begin
     ShowMessage('No hay imágenes para rehacer.');
   end;
+end;
+
+procedure TfrmImagen.MenuItem12Click(Sender: TObject);
+begin
+  frmCalculadora.Show;
 end;
 
 //Negativo

@@ -16,6 +16,7 @@ const
   procedure AplicaLut(var M1 : Mat3D; var M2 : Mat3D; mc, nr : Integer; T :  ArrLam);
 
   procedure FPUmbral(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer; sentido: Boolean; p1: Integer);
+  procedure FSeno(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
 implementation
 
 var
@@ -120,6 +121,18 @@ begin
   end;
 end;
 
+//Función seno(Aclarar)
+procedure FSeno(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
+var
+  k: Integer;
+begin
+  SetLength(M2, mc, nr, 3);
+
+  for k:=1 to Lam do
+    Tabla[k] := Round(Lam * sin((Pi*k)/(2*Lam)));
+  AplicaLut(M1, M2, mc, nr, Tabla);
+
+end;
 
 end.
 

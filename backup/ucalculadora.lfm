@@ -27,7 +27,9 @@ object frmCalculadora: TfrmCalculadora
       'B <-- R'
       'A<-> B'
     )
+    ParentShowHint = False
     ReadOnly = True
+    ShowHint = True
     TabOrder = 0
     Text = 'Operación'
   end

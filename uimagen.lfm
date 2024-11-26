@@ -101,6 +101,10 @@ object frmImagen: TfrmImagen
         Caption = 'Umbral'
         OnClick = MenuItem9Click
       end
+      object MenuItem13: TMenuItem
+        Caption = 'Función seno'
+        OnClick = MenuItem13Click
+      end
     end
   end
   object OpenDialog1: TOpenDialog
