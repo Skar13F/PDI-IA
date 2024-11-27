@@ -7,7 +7,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
-  ExtCtrls, uVarios, uHistograma, uPuntuales, uGamma, uCalculadora;
+  ExtCtrls, uVarios, uHistograma, uPuntuales, uGamma, uCalculadora, uExponencial;
 
 type
 
@@ -20,6 +20,8 @@ type
     MenuItem10: TMenuItem;
     MenuItem11: TMenuItem;
     MenuItem12: TMenuItem;
+    MenuItem13: TMenuItem;
+    MenuItem14: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -48,6 +50,8 @@ type
     procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem11Click(Sender: TObject);
     procedure MenuItem12Click(Sender: TObject);
+    procedure MenuItem13Click(Sender: TObject);
+    procedure MenuItem14Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -326,6 +330,34 @@ end;
 procedure TfrmImagen.MenuItem12Click(Sender: TObject);
 begin
   frmCalculadora.Show;
+end;
+//Función seno
+procedure TfrmImagen.MenuItem13Click(Sender: TObject);
+begin
+  Iancho:= BM.Width;
+  Ialto:= BM.Height;
+  BM_MAT(BM, MTR);
+  FSeno(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+//Función exponencial
+procedure TfrmImagen.MenuItem14Click(Sender: TObject);
+var
+  alf : real;
+begin
+  frmExponencial.ShowModal;
+  if frmExponencial.ModalResult = mrOK then
+  begin
+    alf := frmExponencial.alfa;
+    Iancho:=BM.Width;
+    Ialto:=BM.Height;
+    BM_MAT(BM, MTR);
+    ShowMessage(FloatToStr(alf));
+    FExponencial(MTR, MRES, Iancho, Ialto, alf);
+    MAT_BM(MRES, BM, Iancho, Ialto);
+    MImagen(BM);
+  end;
 end;
 
 //Negativo
