@@ -105,6 +105,10 @@ object frmImagen: TfrmImagen
         Caption = 'Función seno'
         OnClick = MenuItem13Click
       end
+      object MenuItem14: TMenuItem
+        Caption = 'Exponencial'
+        OnClick = MenuItem14Click
+      end
     end
   end
   object OpenDialog1: TOpenDialog
