@@ -353,7 +353,6 @@ begin
     Iancho:=BM.Width;
     Ialto:=BM.Height;
     BM_MAT(BM, MTR);
-    ShowMessage(FloatToStr(alf));
     FExponencial(MTR, MRES, Iancho, Ialto, alf);
     MAT_BM(MRES, BM, Iancho, Ialto);
     MImagen(BM);

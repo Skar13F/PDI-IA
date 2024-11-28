@@ -1,7 +1,7 @@
 object frmExponencial: TfrmExponencial
-  Left = 2424
+  Left = 2879
   Height = 406
-  Top = 163
+  Top = 498
   Width = 690
   Caption = 'Función exponencial'
   ClientHeight = 406
