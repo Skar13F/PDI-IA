@@ -1,10 +1,10 @@
 object frmHistograma: TfrmHistograma
-  Left = 342
-  Height = 351
-  Top = 39
+  Left = 594
+  Height = 406
+  Top = 247
   Width = 1021
   Caption = 'Histograma'
-  ClientHeight = 351
+  ClientHeight = 406
   ClientWidth = 1021
   DesignTimePPI = 115
   OnClose = FormClose

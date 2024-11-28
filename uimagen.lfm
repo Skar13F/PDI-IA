@@ -109,6 +109,10 @@ object frmImagen: TfrmImagen
         Caption = 'Exponencial'
         OnClick = MenuItem14Click
       end
+      object MenuItem15: TMenuItem
+        Caption = 'Logaritmo'
+        OnClick = MenuItem15Click
+      end
     end
   end
   object OpenDialog1: TOpenDialog

@@ -42,6 +42,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure PintaHisto();
     procedure UpdateHistogram(Bitmap: TBitmap);
+    procedure CalcularPerfilDeIntensidad();
   private
     { private declarations }
   public
@@ -50,6 +51,7 @@ type
     BH : TBitMap;
     MH : Mat3D;
     HH : ArrInt;
+    ModoPerfilIntensidad: Boolean;
   end;
 
 var
@@ -79,7 +81,11 @@ begin
   nc := BH.Width;  //Se obtiene el ancho y alto del BitMap (imagen)
   nr := BH.Height; //para iniciar a trabajar
   BM_MAT(BH,MH);   //Pasa la imagen a un arreglo
-  PintaHisto();    //Pinta el histograma
+    // Dibuja según el modo seleccionado
+  if ModoPerfilIntensidad then
+    CalcularPerfilDeIntensidad() // Dibuja el Perfil de Intensidad
+  else
+    PintaHisto(); // Dibuja el Histograma
 end;
 
 //Al salir limpia el Image
@@ -104,6 +110,7 @@ begin
   chkRojo.Checked := True;   //rojo
   chkVerde.Checked := True;  //verde
   chkAzul.Checked := True;   //azul
+  ModoPerfilIntensidad:= False;
 end;
 
 //Los cambios que se aprecian cuando se muestra la ventana
@@ -197,14 +204,131 @@ begin
     ShowMessage('No se recibió una región válida para el histograma.');
     Exit;
   end;
+  ModoPerfilIntensidad:= True;
+
+  // Limpia la ventana del histograma
+  imgHisto.Canvas.Brush.Color := clBlack;
+  imgHisto.Canvas.FillRect(0, 0, Han, Hal);
 
   // Asigna la nueva región seleccionada al bitmap del histograma
   BH.Assign(Bitmap);
+  nc := BH.Width;  // Actualiza columnas
+  nr := BH.Height; // Actualiza filas
+  BM_MAT(BH, MH);  // Convierte el Bitmap en matriz para análisis
 
-  bAplicarClick(Self);
-  // Dibuja el histograma
-  PintaHisto();
+  // Calcula el perfil de intensidad del color gris
+  CalcularPerfilDeIntensidad();
 end;
+
+
+procedure TfrmHistograma.CalcularPerfilDeIntensidad();
+var
+  i, j: Integer;
+  intensidadRojo, intensidadVerde, intensidadAzul, intensidadGris: array of Integer;
+  sumaR, sumaG, sumaB, sumaGris, pixeles: Integer;
+  escalaRojo, escalaVerde, escalaAzul, escalaGris: Real;
+  maxRojo, maxVerde, maxAzul, maxGris: Integer;
+begin
+  // Inicializa los arreglos para almacenar la intensidad promedio de cada fila
+  SetLength(intensidadRojo, nr);
+  SetLength(intensidadVerde, nr);
+  SetLength(intensidadAzul, nr);
+  SetLength(intensidadGris, nr);
+
+  maxRojo := 0;
+  maxVerde := 0;
+  maxAzul := 0;
+  maxGris := 0;
+
+  // Calcula la intensidad promedio por fila para cada canal
+  for j := 0 to nr - 1 do
+  begin
+    sumaR := 0;
+    sumaG := 0;
+    sumaB := 0;
+    sumaGris := 0;
+    pixeles := 0;
+    for i := 0 to nc - 1 do
+    begin
+      sumaR := sumaR + MH[i][j][0]; // Rojo
+      sumaG := sumaG + MH[i][j][1]; // Verde
+      sumaB := sumaB + MH[i][j][2]; // Azul
+      Inc(pixeles);
+    end;
+
+    if pixeles > 0 then
+    begin
+      intensidadRojo[j] := sumaR div pixeles;
+      intensidadVerde[j] := sumaG div pixeles;
+      intensidadAzul[j] := sumaB div pixeles;
+      // Calcula la intensidad gris
+      intensidadGris[j] := Round(0.3 * intensidadRojo[j] + 0.59 * intensidadVerde[j] + 0.11 * intensidadAzul[j]);
+    end
+    else
+    begin
+      intensidadRojo[j] := 0;
+      intensidadVerde[j] := 0;
+      intensidadAzul[j] := 0;
+      intensidadGris[j] := 0;
+    end;
+
+    // Encuentra el valor máximo para escalar
+    maxRojo := Max(maxRojo, intensidadRojo[j]);
+    maxVerde := Max(maxVerde, intensidadVerde[j]);
+    maxAzul := Max(maxAzul, intensidadAzul[j]);
+    maxGris := Max(maxGris, intensidadGris[j]);
+  end;
+
+  // Limpia la ventana de dibujo
+  imgHisto.Canvas.Brush.Color := clBlack;
+  imgHisto.Canvas.FillRect(0, 0, Han, Hal);
+
+  // Dibuja los perfiles solo si los checkboxes están activados
+
+  // Canal Rojo
+  if chkRojo.Checked then
+  begin
+    if maxRojo > 0 then escalaRojo := Hal / maxRojo else escalaRojo := 1;
+    imgHisto.Canvas.Pen.Color := clRed;
+    imgHisto.Canvas.MoveTo(0, Hal - Round(intensidadRojo[0] * escalaRojo));
+    for j := 1 to nr - 1 do
+      imgHisto.Canvas.LineTo(Round(j * Han / nr), Hal - Round(intensidadRojo[j] * escalaRojo));
+  end;
+
+  // Canal Verde
+  if chkVerde.Checked then
+  begin
+    if maxVerde > 0 then escalaVerde := Hal / maxVerde else escalaVerde := 1;
+    imgHisto.Canvas.Pen.Color := clGreen;
+    imgHisto.Canvas.MoveTo(0, Hal - Round(intensidadVerde[0] * escalaVerde));
+    for j := 1 to nr - 1 do
+      imgHisto.Canvas.LineTo(Round(j * Han / nr), Hal - Round(intensidadVerde[j] * escalaVerde));
+  end;
+
+  // Canal Azul
+  if chkAzul.Checked then
+  begin
+    if maxAzul > 0 then escalaAzul := Hal / maxAzul else escalaAzul := 1;
+    imgHisto.Canvas.Pen.Color := clBlue;
+    imgHisto.Canvas.MoveTo(0, Hal - Round(intensidadAzul[0] * escalaAzul));
+    for j := 1 to nr - 1 do
+      imgHisto.Canvas.LineTo(Round(j * Han / nr), Hal - Round(intensidadAzul[j] * escalaAzul));
+  end;
+
+  // Canal Gris
+  if chkGris.Checked then
+  begin
+    if maxGris > 0 then escalaGris := Hal / maxGris else escalaGris := 1;
+    imgHisto.Canvas.Pen.Color := clWhite;
+    imgHisto.Canvas.MoveTo(0, Hal - Round(intensidadGris[0] * escalaGris));
+    for j := 1 to nr - 1 do
+      imgHisto.Canvas.LineTo(Round(j * Han / nr), Hal - Round(intensidadGris[j] * escalaGris));
+  end;
+end;
+
+
+
+
 
 
 

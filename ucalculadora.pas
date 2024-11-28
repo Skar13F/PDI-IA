@@ -90,6 +90,7 @@ begin
     ShowMessage('Por favor, asegúrate de que ambas imágenes (BM1 y BM2) estén cargadas.');
     Exit;
   end;
+  bitMapTem := TBitmap.Create;
 
   if cmbOperaciones.Text = 'Suma 1' then//suma 1
     begin
@@ -172,6 +173,7 @@ begin
     end
   else
     ShowMessage('Selecciona una opción válida');
+  bitMapTem.Free;
 
 end;
 
