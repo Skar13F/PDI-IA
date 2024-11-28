@@ -1,5 +1,5 @@
 object frmCalculadora: TfrmCalculadora
-  Left = 2122
+  Left = 682
   Height = 324
   Top = 156
   Width = 1238

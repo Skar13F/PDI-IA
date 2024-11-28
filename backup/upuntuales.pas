@@ -142,7 +142,7 @@ var
 begin
   SetLength(M2, mc, nr, 3);
   for k:=1 to Lam do
-    Tabla[k] := Round(Lam / (1 - Exp(-1 *  g)) * (1 - Exp((-1 * g * k) / Lam);
+    Tabla[k] := Round(Lam / (1 - Exp(-1 *  g)) * (1 - Exp((-1 * g * k) / Lam)));
   AplicaLut(M1, M2, mc, nr, Tabla);
 end;
 

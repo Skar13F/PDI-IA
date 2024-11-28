@@ -83,48 +83,62 @@ procedure TfrmCalculadora.cmbOperacionesChange(Sender: TObject);
 var
   bitMapTem : TBitmap;
 begin
-  if cmbOperaciones.Text = 'Suma 1' then//-------------------solo cambia el BMR
+    // Verificar que BM1 y BM2 tengan imágenes cargadas
+  if (BM1 = nil) or (BM2 = nil) or (BM1.Width = 0) or (BM1.Height = 0) or
+    (BM2.Width = 0) or (BM2.Height = 0) then
+  begin
+    ShowMessage('Por favor, asegúrate de que ambas imágenes (BM1 y BM2) estén cargadas.');
+    Exit;
+  end;
+  bitMapTem.Create;
+
+  if cmbOperaciones.Text = 'Suma 1' then//suma 1
     begin
       SumarImagenes(BM1,BM2,BMR);
       DisplayBitmapInImage(BMR, Image3);
     end
-  else if cmbOperaciones.Text = 'Suma 2' then//--------------solo cambia el BMR
+  else if cmbOperaciones.Text = 'Suma 2' then//suma 2
     begin
       SumarImagenes2(BM1,BM2,BMR);
       DisplayBitmapInImage(BMR, Image3);
     end
-  else if cmbOperaciones.Text = 'Resta 1' then//-------------solo cambia el BMR
+  else if cmbOperaciones.Text = 'Resta 1' then//resta 1
     begin
       RestaImagenes(BM1,BM2,BMR);
       DisplayBitmapInImage(BMR, Image3);
     end
-  else if cmbOperaciones.Text = 'Resta 2' then//-------------solo cambia el BMR
+  else if cmbOperaciones.Text = 'Resta 2' then//resta 2
     begin
       RestaImagenesValorAbsoluto(BM1, BM2,  BMR);
       DisplayBitmapInImage(BMR, Image3);
     end
-  else if cmbOperaciones.Text = 'Resta 3' then//-------------solo cambia el BMR
+  else if cmbOperaciones.Text = 'Resta 3' then//resta 3
     begin
       RestaImagenesShift(BM1,BM2,BMR);
       DisplayBitmapInImage(BMR, Image3);
     end
-  else if cmbOperaciones.Text = 'Rflx. H' then//-------------Reflex h Solo cambia BMR
+  else if cmbOperaciones.Text = 'Rflx. H' then//reflexión H
     begin
       ReflexionHorizontal(BMR);
       DisplayBitmapInImage(BMR, Image3);
     end
-  else if cmbOperaciones.Text = 'Rflx. V' then
+  else if cmbOperaciones.Text = 'Rflx. V' then//Reflexión V
     begin
       ReflexionVertical(BMR);
       DisplayBitmapInImage(BMR, Image3);
     end
-  else if cmbOperaciones.Text = 'Rflx. Doble' then
+  else if cmbOperaciones.Text = 'Rflx. Doble' then// Reflexión doble
     begin
       ReflexionDoble(BMR);
       DisplayBitmapInImage(BMR, Image3);
     end
-  else if cmbOperaciones.Text = 'A <-- R' then
+  else if cmbOperaciones.Text = 'A <-- R' then// cambio
     begin
+      if (BMR = nil) or (BMR.Width = 0) or (BMR.Height = 0) then
+        begin
+          ShowMessage('No hay datos en BMR. Realiza una operación antes de intentar esta acción.');
+          Exit;
+        end;
       bitMapTem.Assign(BM1);
       BM1.Assign(BMR);
       DisplayBitmapInImage(BM1, Image1);
@@ -133,6 +147,11 @@ begin
     end
   else if cmbOperaciones.Text = 'B <-- R' then
     begin
+      if (BMR = nil) or (BMR.Width = 0) or (BMR.Height = 0) then
+        begin
+          ShowMessage('No hay datos en BMR. Realiza una operación antes de intentar esta acción.');
+          Exit;
+        end;
       bitMapTem.Assign(BM2);
       BM2.Assign(BMR);
       DisplayBitmapInImage(BM2, Image2);
@@ -141,6 +160,11 @@ begin
     end
   else if cmbOperaciones.Text = 'A<-> B' then
     begin
+      if (BMR = nil) or (BMR.Width = 0) or (BMR.Height = 0) then
+        begin
+          ShowMessage('No hay datos en BMR. Realiza una operación antes de intentar esta acción.');
+          Exit;
+        end;
       bitMapTem.Assign(BM1);
       BM1.Assign(BM2);
       DisplayBitmapInImage(BM1, Image1);
@@ -149,6 +173,7 @@ begin
     end
   else
     ShowMessage('Selecciona una opción válida');
+  bitMapTem.Free;
 
 end;
 

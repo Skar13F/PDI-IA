@@ -22,6 +22,7 @@ type
     MenuItem12: TMenuItem;
     MenuItem13: TMenuItem;
     MenuItem14: TMenuItem;
+    MenuItem15: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -52,6 +53,7 @@ type
     procedure MenuItem12Click(Sender: TObject);
     procedure MenuItem13Click(Sender: TObject);
     procedure MenuItem14Click(Sender: TObject);
+    procedure MenuItem15Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -357,6 +359,18 @@ begin
     MAT_BM(MRES, BM, Iancho, Ialto);
     MImagen(BM);
   end;
+end;
+
+//Logaritmo
+procedure TfrmImagen.MenuItem15Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  FLogaritmo(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
 end;
 
 //Negativo
