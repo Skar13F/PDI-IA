@@ -4,13 +4,13 @@
     <PathDelim Value="\"/>
     <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="13">
+    <Units Count="16">
       <Unit0>
         <Filename Value="pImagen.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="69"/>
+        <UsageCount Value="81"/>
       </Unit0>
       <Unit1>
         <Filename Value="uimagen.pas"/>
@@ -19,10 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uImagen"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="340"/>
-        <CursorPos X="21" Y="355"/>
-        <UsageCount Value="69"/>
+        <TopLine Value="100"/>
+        <CursorPos X="46" Y="106"/>
+        <UsageCount Value="81"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -30,10 +29,10 @@
         <Filename Value="uvarios.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uVarios"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="38"/>
         <CursorPos X="42" Y="16"/>
-        <UsageCount Value="69"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="81"/>
       </Unit2>
       <Unit3>
         <Filename Value="uhistograma.pas"/>
@@ -42,10 +41,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uHistograma"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="5"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="167"/>
         <CursorPos X="87" Y="118"/>
-        <UsageCount Value="69"/>
+        <UsageCount Value="81"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -53,10 +52,9 @@
         <Filename Value="upuntuales.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uPuntuales"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="123"/>
-        <CursorPos X="23" Y="145"/>
-        <UsageCount Value="59"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="13" Y="19"/>
+        <UsageCount Value="71"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -66,12 +64,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uGamma"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="7"/>
         <CursorPos X="13" Y="46"/>
-        <UsageCount Value="46"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="58"/>
       </Unit5>
       <Unit6>
         <Filename Value="uumbral.pas"/>
@@ -79,7 +75,7 @@
         <UnitName Value="uUmbral"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="10" Y="5"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="55"/>
       </Unit6>
       <Unit7>
         <Filename Value="ucalculadora.pas"/>
@@ -88,179 +84,176 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCalculadora"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="7"/>
-        <CursorPos X="53" Y="10"/>
-        <ComponentState Value="1"/>
-        <UsageCount Value="23"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="175"/>
+        <CursorPos X="46" Y="188"/>
+        <UsageCount Value="35"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit7>
       <Unit8>
+        <Filename Value="uexponencial.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmExponencial"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uExponencial"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="44" Y="4"/>
+        <UsageCount Value="33"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="uopcalculadora.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uOpCalculadora"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="286"/>
+        <CursorPos X="17" Y="310"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+      </Unit9>
+      <Unit10>
         <Filename Value="C:\lazarus\lcl\include\fpimagebitmap.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="127"/>
         <CursorPos Y="141"/>
-        <UsageCount Value="9"/>
-      </Unit8>
-      <Unit9>
+        <UsageCount Value="8"/>
+      </Unit10>
+      <Unit11>
         <Filename Value="..\..\..\..\..\..\usr\share\fpcsrc\3.2.2\packages\fv\src\menus.pas"/>
         <UnitName Value="Menus"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="312"/>
         <CursorPos Y="328"/>
-        <UsageCount Value="12"/>
-      </Unit9>
-      <Unit10>
+        <UsageCount Value="11"/>
+      </Unit11>
+      <Unit12>
         <Filename Value="..\Lazarus_IA-main\uimagen.pas"/>
         <UnitName Value="uImagen"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="87"/>
         <CursorPos X="13" Y="87"/>
-        <UsageCount Value="13"/>
-      </Unit10>
-      <Unit11>
+        <UsageCount Value="12"/>
+      </Unit12>
+      <Unit13>
         <Filename Value="..\..\..\..\..\..\..\usr\lib\lazarus\lcl\include\picture.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="767"/>
         <CursorPos Y="781"/>
-        <UsageCount Value="10"/>
-      </Unit11>
-      <Unit12>
-        <Filename Value="uexponencial.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmExponencial"/>
+        <UsageCount Value="9"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="..\..\..\..\..\..\..\run\media\oscar\EA94-51B6\IA P2 - MEDIO - copia\uoperaciones.pas"/>
+        <UnitName Value="uOperaciones"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="9"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="..\..\..\..\IA P2 - MEDIO - copia\uoperaciones.pas"/>
+        <ComponentName Value="frmCalculadora"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uExponencial"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="25"/>
-        <CursorPos X="44" Y="4"/>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
-      </Unit12>
+        <UnitName Value="uOperaciones"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="125"/>
+        <CursorPos X="37" Y="171"/>
+        <UsageCount Value="16"/>
+      </Unit15>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="23" HistoryIndex="22">
       <Position1>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="163" Column="8" TopLine="149"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="67" Column="23" TopLine="51"/>
       </Position1>
       <Position2>
         <Filename Value="uimagen.pas"/>
-        <Caret Line="162" Column="60" TopLine="146"/>
+        <Caret Line="462" Column="30" TopLine="434"/>
       </Position2>
       <Position3>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="306" Column="51" TopLine="306"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="98" Column="33" TopLine="71"/>
       </Position3>
       <Position4>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="163" Column="11" TopLine="149"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="99" Column="38" TopLine="82"/>
       </Position4>
       <Position5>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="436" Column="16" TopLine="412"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="89" Column="51" TopLine="83"/>
       </Position5>
       <Position6>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="163" Column="12" TopLine="151"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="86" TopLine="59"/>
       </Position6>
       <Position7>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="441" Column="27" TopLine="418"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="50" TopLine="36"/>
       </Position7>
       <Position8>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="442" Column="39" TopLine="419"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="91" TopLine="64"/>
       </Position8>
       <Position9>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="441" Column="27" TopLine="418"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="86" Column="42" TopLine="75"/>
       </Position9>
       <Position10>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="439" Column="11" TopLine="418"/>
+        <Filename Value="uopcalculadora.pas"/>
+        <Caret Line="8" Column="36"/>
       </Position10>
       <Position11>
-        <Filename Value="uhistograma.pas"/>
-        <Caret Line="93" Column="10" TopLine="82"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="113" Column="23" TopLine="91"/>
       </Position11>
       <Position12>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="439" Column="39" TopLine="413"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="132" TopLine="108"/>
       </Position12>
       <Position13>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="390" Column="46" TopLine="370"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="33" Column="68" TopLine="17"/>
       </Position13>
       <Position14>
-        <Filename Value="uhistograma.pas"/>
-        <Caret Line="200" Column="6" TopLine="179"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="128" Column="66" TopLine="109"/>
       </Position14>
       <Position15>
         <Filename Value="uimagen.pas"/>
-        <Caret Line="207" Column="39" TopLine="194"/>
+        <Caret Line="146" Column="3"/>
       </Position15>
       <Position16>
-        <Filename Value="uhistograma.pas"/>
-        <Caret Line="200" Column="37" TopLine="180"/>
+        <Filename Value="uopcalculadora.pas"/>
+        <Caret Line="8" Column="37"/>
       </Position16>
       <Position17>
-        <Filename Value="uhistograma.pas"/>
-        <Caret Line="210" Column="18" TopLine="191"/>
+        <Filename Value="uopcalculadora.pas"/>
+        <Caret Line="239" TopLine="185"/>
       </Position17>
       <Position18>
         <Filename Value="ucalculadora.pas"/>
-        <Caret Line="10" Column="53"/>
+        <Caret Line="95" Column="28" TopLine="80"/>
       </Position18>
       <Position19>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="200" Column="57" TopLine="188"/>
+        <Filename Value="uopcalculadora.pas"/>
+        <Caret Line="309" Column="3" TopLine="283"/>
       </Position19>
       <Position20>
-        <Filename Value="ucalculadora.pas"/>
-        <Caret Line="10" Column="53" TopLine="7"/>
+        <Filename Value="uopcalculadora.pas"/>
+        <Caret Line="308" Column="55" TopLine="287"/>
       </Position20>
       <Position21>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="202" Column="57" TopLine="190"/>
+        <Filename Value="uopcalculadora.pas"/>
+        <Caret Line="17" Column="53"/>
       </Position21>
       <Position22>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="328" Column="23" TopLine="313"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="107" Column="9" TopLine="88"/>
       </Position22>
       <Position23>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="435" Column="38" TopLine="433"/>
+        <Filename Value="ucalculadora.pas"/>
+        <Caret Line="124" Column="41" TopLine="76"/>
       </Position23>
-      <Position24>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="442" Column="38" TopLine="440"/>
-      </Position24>
-      <Position25>
-        <Filename Value="uexponencial.pas"/>
-        <Caret Line="12" Column="32"/>
-      </Position25>
-      <Position26>
-        <Filename Value="uexponencial.pas"/>
-        <Caret Line="28" Column="16" TopLine="17"/>
-      </Position26>
-      <Position27>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="12" Column="49" TopLine="7"/>
-      </Position27>
-      <Position28>
-        <Filename Value="uimagen.pas"/>
-        <Caret Line="342" Column="36" TopLine="333"/>
-      </Position28>
-      <Position29>
-        <Filename Value="upuntuales.pas"/>
-        <Caret Line="139" Column="23" TopLine="123"/>
-      </Position29>
-      <Position30>
-        <Filename Value="upuntuales.pas"/>
-        <Caret Line="145" Column="80" TopLine="123"/>
-      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
