@@ -1,10 +1,10 @@
 object frmImagen: TfrmImagen
   Left = 1172
-  Height = 622
+  Height = 546
   Top = 250
   Width = 619
   Caption = 'IMAGEN'
-  ClientHeight = 622
+  ClientHeight = 546
   ClientWidth = 619
   DesignTimePPI = 115
   Menu = MainMenu1
@@ -108,6 +108,10 @@ object frmImagen: TfrmImagen
       object MenuItem14: TMenuItem
         Caption = 'Exponencial'
         OnClick = MenuItem14Click
+      end
+      object MenuItem15: TMenuItem
+        Caption = 'Logaritmo'
+        OnClick = MenuItem15Click
       end
     end
   end

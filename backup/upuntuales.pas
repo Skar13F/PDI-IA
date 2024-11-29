@@ -18,6 +18,7 @@ const
   procedure FPUmbral(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer; sentido: Boolean; p1: Integer);
   procedure FSeno(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
   procedure FExponencial(var M1 : Mat3D; var M2 : Mat3D;  mc, nr : Integer; g : Real);
+  procedure FLogaritmo(var M1 : Mat3D; var M2 : Mat3D; mc, nr: Integer);
 implementation
 
 var
@@ -145,6 +146,17 @@ begin
     Tabla[k] := Round(Lam / (1 - Exp(-1 *  g)) * (1 - Exp((-1 * g * k) / Lam)));
   AplicaLut(M1, M2, mc, nr, Tabla);
 end;
+
+//Función logaritmo(Aclarar)
+procedure FLogaritmo(var M1 : Mat3D; var M2 : Mat3D; mc, nr: Integer);
+  var
+    k:integer;
+    begin
+      SetLength(M2,mc,nr,3);
+      for k:=1 to Lam do
+      Tabla[k]:=round((Lam/ln(lam+1))*ln(k+1));
+      AplicaLUT(M1,M2,mc,nr,Tabla);
+    end;
 
 end.
 

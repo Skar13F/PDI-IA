@@ -113,6 +113,10 @@ object frmImagen: TfrmImagen
         Caption = 'Logaritmo'
         OnClick = MenuItem15Click
       end
+      object mnuCoseno: TMenuItem
+        Caption = 'Función  coseno'
+        OnClick = mnuCosenoClick
+      end
     end
   end
   object OpenDialog1: TOpenDialog

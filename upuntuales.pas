@@ -19,6 +19,9 @@ const
   procedure FSeno(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
   procedure FExponencial(var M1 : Mat3D; var M2 : Mat3D;  mc, nr : Integer; g : Real);
   procedure FLogaritmo(var M1 : Mat3D; var M2 : Mat3D; mc, nr: Integer);
+
+  //oscurecimiento de imagen
+  procedure FCoseno(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
 implementation
 
 var
@@ -157,6 +160,15 @@ procedure FLogaritmo(var M1 : Mat3D; var M2 : Mat3D; mc, nr: Integer);
       Tabla[k]:=round((Lam/ln(lam+1))*ln(k+1));
       AplicaLUT(M1,M2,mc,nr,Tabla);
     end;
-
+//----------------------------------------------------------------------------//
+procedure FCoseno(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
+var
+  k:  Integer;
+begin
+  SetLength(M2, mc, nr, 3);
+  for k:=1 to Lam do
+    Tabla[k] := Round(Lam * (1 - Cos((Pi * k) / (2 * Lam))));
+  AplicaLut(M1, M2, mc, nr, Tabla);
+end;
 end.
 

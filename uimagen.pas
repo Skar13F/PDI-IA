@@ -23,6 +23,7 @@ type
     MenuItem13: TMenuItem;
     MenuItem14: TMenuItem;
     MenuItem15: TMenuItem;
+    mnuCoseno: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -64,6 +65,7 @@ type
     procedure mnuArchivoGuardarClick(Sender: TObject);
     procedure mnuArchivoSalirClick(Sender: TObject);
     procedure MImagen (B : TBitMap; add : Boolean = true);
+    procedure mnuCosenoClick(Sender: TObject);
     procedure mnuHerrHistogramaClick(Sender: TObject);
     procedure frmHistogramaClosed(Sender: TObject; var CloseAction: TCloseAction);
   private
@@ -481,6 +483,16 @@ begin
     imagenes[currentImageIndex] := copyBitmap;
 
   end;
+end;
+//Función coseno para oscurecer
+procedure TfrmImagen.mnuCosenoClick(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  FCoseno(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM,  Iancho, Ialto);
+  MImagen(BM);
 end;
 
 
