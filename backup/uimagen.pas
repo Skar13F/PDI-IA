@@ -7,7 +7,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
-  ExtCtrls, uVarios, uHistograma, uPuntuales, uGamma, uCalculadora, uExponencial;
+  ExtCtrls, uVarios, uHistograma, uPuntuales, uGamma, uCalculadora, uExponencial,
+  uRegionales;
 
 type
 
@@ -23,6 +24,10 @@ type
     MenuItem13: TMenuItem;
     MenuItem14: TMenuItem;
     MenuItem15: TMenuItem;
+    MenuItem16: TMenuItem;
+    MenuItem17: TMenuItem;
+    MenuItem18: TMenuItem;
+    mnuCoseno: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -54,6 +59,8 @@ type
     procedure MenuItem13Click(Sender: TObject);
     procedure MenuItem14Click(Sender: TObject);
     procedure MenuItem15Click(Sender: TObject);
+    procedure MenuItem17Click(Sender: TObject);
+    procedure MenuItem18Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -64,6 +71,7 @@ type
     procedure mnuArchivoGuardarClick(Sender: TObject);
     procedure mnuArchivoSalirClick(Sender: TObject);
     procedure MImagen (B : TBitMap; add : Boolean = true);
+    procedure mnuCosenoClick(Sender: TObject);
     procedure mnuHerrHistogramaClick(Sender: TObject);
     procedure frmHistogramaClosed(Sender: TObject; var CloseAction: TCloseAction);
   private
@@ -373,6 +381,39 @@ begin
   MImagen(BM);
 end;
 
+//Aplica el filtro de media a la imagen
+procedure TfrmImagen.MenuItem17Click(Sender: TObject);
+var
+  Mc : M3x3;
+  ff : Real;
+begin
+  bCon := 1;
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  //Obtiene la matriz de convolución en un entorno de velocidad de 3x3
+  Llena_MC(Mc, ff);
+  FRMediaA(MTR, MRES, Iancho, Ialto, Mc, ff);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem18Click(Sender: TObject);
+var
+  MG : M3x3;
+  ff: Real;
+begin
+  bCon:=2;//bandera gaussiano
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  //Obtiene la matriz de convolución en un entorno de velocidad de 3x3
+  Llena_MC(Mg, ff);
+  FRMediaA_gaussiano(MTR, MRES, Iancho, Ialto, Mg, ff);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
 //Negativo
 procedure TfrmImagen.MenuItem2Click(Sender: TObject);
 begin
@@ -481,6 +522,16 @@ begin
     imagenes[currentImageIndex] := copyBitmap;
 
   end;
+end;
+//Función coseno para oscurecer
+procedure TfrmImagen.mnuCosenoClick(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  FCoseno(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM,  Iancho, Ialto);
+  MImagen(BM);
 end;
 
 

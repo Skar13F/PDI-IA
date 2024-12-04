@@ -1,11 +1,11 @@
 object frmImagen: TfrmImagen
   Left = 1172
-  Height = 546
+  Height = 622
   Top = 250
-  Width = 619
+  Width = 692
   Caption = 'IMAGEN'
-  ClientHeight = 546
-  ClientWidth = 619
+  ClientHeight = 622
+  ClientWidth = 692
   DesignTimePPI = 115
   Menu = MainMenu1
   OnCreate = FormCreate
@@ -112,6 +112,21 @@ object frmImagen: TfrmImagen
       object MenuItem15: TMenuItem
         Caption = 'Logaritmo'
         OnClick = MenuItem15Click
+      end
+      object mnuCoseno: TMenuItem
+        Caption = 'Función  coseno'
+        OnClick = mnuCosenoClick
+      end
+    end
+    object MenuItem16: TMenuItem
+      Caption = 'O. Regionales'
+      object MenuItem17: TMenuItem
+        Caption = 'Filtro media'
+        OnClick = MenuItem17Click
+      end
+      object MenuItem18: TMenuItem
+        Caption = 'Gaussiano'
+        OnClick = MenuItem18Click
       end
     end
   end

@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="10">
+    <Units Count="11">
       <Unit0>
         <Filename Value="pImagen.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -98,6 +98,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uOpCalculadora"/>
       </Unit9>
+      <Unit10>
+        <Filename Value="uregionales.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uRegionales"/>
+      </Unit10>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
