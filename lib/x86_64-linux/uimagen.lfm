@@ -1,11 +1,11 @@
 object frmImagen: TfrmImagen
-  Left = 1172
+  Left = 1075
   Height = 622
-  Top = 250
-  Width = 692
+  Top = 271
+  Width = 747
   Caption = 'IMAGEN'
   ClientHeight = 622
-  ClientWidth = 692
+  ClientWidth = 747
   DesignTimePPI = 115
   Menu = MainMenu1
   OnCreate = FormCreate
@@ -117,6 +117,10 @@ object frmImagen: TfrmImagen
         Caption = 'Función  coseno'
         OnClick = mnuCosenoClick
       end
+      object MenuItem20: TMenuItem
+        Caption = 'Exponencial 2'
+        OnClick = MenuItem20Click
+      end
     end
     object MenuItem16: TMenuItem
       Caption = 'O. Regionales'
@@ -128,6 +132,10 @@ object frmImagen: TfrmImagen
         Caption = 'Gaussiano'
         OnClick = MenuItem18Click
       end
+    end
+    object MenuItem19: TMenuItem
+      Caption = 'Ayuda'
+      OnClick = MenuItem19Click
     end
   end
   object OpenDialog1: TOpenDialog

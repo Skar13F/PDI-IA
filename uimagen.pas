@@ -8,7 +8,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
   ExtCtrls, uVarios, uHistograma, uPuntuales, uGamma, uCalculadora, uExponencial,
-  uRegionales;
+  uRegionales, uAyuda;
 
 type
 
@@ -27,6 +27,8 @@ type
     MenuItem16: TMenuItem;
     MenuItem17: TMenuItem;
     MenuItem18: TMenuItem;
+    MenuItem19: TMenuItem;
+    MenuItem20: TMenuItem;
     mnuCoseno: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
@@ -61,6 +63,8 @@ type
     procedure MenuItem15Click(Sender: TObject);
     procedure MenuItem17Click(Sender: TObject);
     procedure MenuItem18Click(Sender: TObject);
+    procedure MenuItem19Click(Sender: TObject);
+    procedure MenuItem20Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -412,6 +416,29 @@ begin
   FRMediaA_gaussiano(MTR, MRES, Iancho, Ialto, Mg, ff);
   MAT_BM(MRES, BM, Iancho, Ialto);
   MImagen(BM);
+end;
+
+//Mostrar información de swl programa
+procedure TfrmImagen.MenuItem19Click(Sender: TObject);
+begin
+  frmAyuda.ShowModal;
+end;
+
+procedure TfrmImagen.MenuItem20Click(Sender: TObject);
+var
+  alf:real;
+begin
+  frmExponencial.ShowModal;
+  if frmExponencial.ModalResult=mrOk then
+  begin
+    alf:=frmExponencial.alfa;
+    Iancho:=BM.Width;
+    Ialto:=BM.Height;
+    BM_Mat(BM, MTr);
+    FExponencialOscuro(MTr, MRes, Iancho, Ialto,alf);
+    Mat_BM(MRes,BM, Iancho, Ialto);
+    MImagen(BM);
+  end;
 end;
 
 //Negativo

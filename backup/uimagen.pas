@@ -8,7 +8,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
   ExtCtrls, uVarios, uHistograma, uPuntuales, uGamma, uCalculadora, uExponencial,
-  uRegionales;
+  uRegionales, uAyuda;
 
 type
 
@@ -27,6 +27,7 @@ type
     MenuItem16: TMenuItem;
     MenuItem17: TMenuItem;
     MenuItem18: TMenuItem;
+    MenuItem19: TMenuItem;
     mnuCoseno: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
@@ -61,6 +62,7 @@ type
     procedure MenuItem15Click(Sender: TObject);
     procedure MenuItem17Click(Sender: TObject);
     procedure MenuItem18Click(Sender: TObject);
+    procedure MenuItem19Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -393,7 +395,7 @@ begin
   BM_MAT(BM, MTR);
   //Obtiene la matriz de convolución en un entorno de velocidad de 3x3
   Llena_MC(Mc, ff);
-  FRMediaA(MTR, MRES, Iancho, Ialto, Mc, ff);
+  FRMediaA_gaussiano(MTR, MRES, Iancho, Ialto, Mc, ff);
   MAT_BM(MRES, BM, Iancho, Ialto);
   MImagen(BM);
 end;
@@ -412,6 +414,12 @@ begin
   FRMediaA_gaussiano(MTR, MRES, Iancho, Ialto, Mg, ff);
   MAT_BM(MRES, BM, Iancho, Ialto);
   MImagen(BM);
+end;
+
+//Mostrar información de swl programa
+procedure TfrmImagen.MenuItem19Click(Sender: TObject);
+begin
+  frmAyuda.ShowModal;
 end;
 
 //Negativo
