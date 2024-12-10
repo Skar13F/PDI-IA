@@ -69,6 +69,8 @@ type
     procedure MenuItem19Click(Sender: TObject);
     procedure MenuItem20Click(Sender: TObject);
     procedure MenuItem21Click(Sender: TObject);
+    procedure MenuItem22Click(Sender: TObject);
+    procedure MenuItem23Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -395,7 +397,7 @@ begin
   Iancho:=BM.Width;
   Ialto:=BM.Height;
   BM_MAT(BM, MTR);
-  FRMediana(MTR, MRES, Iancho, Ialto, Mc, 3);
+  FRMediana(MTR, MRES, Iancho, Ialto, 3);
   MAT_BM(MRES, BM, Iancho, Ialto);
   MImagen(BM);
 end;
@@ -439,7 +441,7 @@ begin
   end;
 end;
 
-// Suavizado mediana ***********************************************************
+// Suavizado media
 procedure TfrmImagen.MenuItem21Click(Sender: TObject);
 var
   Mc : M3x3;
@@ -452,6 +454,26 @@ begin
   //Obtiene la matriz de convolución en un entorno de velocidad de 3x3
   Llena_MC(Mc, ff);
   FRMediaA_gaussiano(MTR, MRES, Iancho, Ialto, Mc, ff);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem22Click(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  FRMedianaMax(MTR, MRES, Iancho, Ialto, 3);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem23Click(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  FRMedianaMin(MTR, MRES, Iancho, Ialto, 3);
   MAT_BM(MRES, BM, Iancho, Ialto);
   MImagen(BM);
 end;

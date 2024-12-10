@@ -5,13 +5,16 @@ unit uRegionales;
 interface
 
 uses
-  Classes, SysUtils, Math, uVarios;
+  Classes, SysUtils, Math, uVarios, Dialogs;
 
   procedure FRMediaA_gaussiano(var M1: Mat3D;  var M2 : Mat3D; mc, nr : Integer; mconv :  M3x3; peso  : real);
   procedure Llena_MC(var M:M3x3;var f:real);
 
   procedure FRMediana(var M1: Mat3D;  var M2 : Mat3D; mc, nr : Integer; tamVentana : Integer);
   procedure Burbuja(var arreglo: array of integer);
+
+  procedure FRMedianaMin(var M1: Mat3D; var M2 : Mat3D; mc, nr : Integer; tamVentana : Integer);
+  procedure FRMedianaMax(var M1: Mat3D; var M2 : Mat3D; mc, nr : Integer; tamVentana : Integer);
 
 const
   Matmed:M3x3=((1,1,1),
@@ -67,8 +70,8 @@ begin
   end;
 end;
 
-//Filtro  mediana para la imagen
-procedure FRMediana(var M1: Mat3D; var M2 : Mat3D; mc, nr : Integer; tamVentana : Integer);
+// Filtro mediana para la imagen
+procedure FRMediana(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer; tamVentana: Integer);
 var
   c, i, j, x, y, pos: Integer;
   ventana: array of Integer;
@@ -83,16 +86,72 @@ begin
         pos := 0;
         for y := -tamVentana div 2 to tamVentana div 2 do
           for x := -tamVentana div 2 to tamVentana div 2 do
+          begin
             ventana[pos] := M1[i + x][j + y][c];
             inc(pos);
+          end;
 
-        // Ordenar la ventana
-        // Aquí puedes usar cualquier algoritmo de ordenamiento (quicksort, mergesort, etc.)
-        // Por ejemplo, usando la función Sort de la unidad System.Generics.Collections
         Burbuja(ventana);
 
         // Obtener la mediana y asignarla
-        M2[i][j][c] := ventana[(Length(ventana) div 2)];
+        M2[i][j][c] := ventana[Length(ventana) div 2];
+      end;
+end;
+
+//Filtro  mediana para la imagen (Mínimo)
+procedure FRMedianaMax(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer; tamVentana: Integer);
+var
+  c, i, j, x, y, pos: Integer;
+  ventana: array of Integer;
+begin
+  SetLength(M2, mc, nr, 3);
+  for c := 0 to 2 do // Para cada canal de color
+    for j := tamVentana div 2 to nr - 1 - tamVentana div 2 do
+      for i := tamVentana div 2 to mc - 1 - tamVentana div 2 do
+      begin
+        // Inicializar la ventana
+        SetLength(ventana, tamVentana * tamVentana);
+        pos := 0;
+        for y := -tamVentana div 2 to tamVentana div 2 do
+          for x := -tamVentana div 2 to tamVentana div 2 do
+          begin
+            ventana[pos] := M1[i + x][j + y][c];
+            inc(pos);
+          end;
+
+        Burbuja(ventana);
+
+        // Obtener el valor máximo y asignarlo
+        M2[i][j][c] := ventana[Length(ventana) - 1];
+      end;
+end;
+
+
+// Filtro mediana para la imagen (Máximo)
+procedure FRMedianaMin(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer; tamVentana: Integer);
+var
+  c, i, j, x, y, pos: Integer;
+  ventana: array of Integer;
+begin
+  SetLength(M2, mc, nr, 3);
+  for c := 0 to 2 do // Para cada canal de color
+    for j := tamVentana div 2 to nr - 1 - tamVentana div 2 do
+      for i := tamVentana div 2 to mc - 1 - tamVentana div 2 do
+      begin
+        // Inicializar la ventana
+        SetLength(ventana, tamVentana * tamVentana);
+        pos := 0;
+        for y := -tamVentana div 2 to tamVentana div 2 do
+          for x := -tamVentana div 2 to tamVentana div 2 do
+          begin
+            ventana[pos] := M1[i + x][j + y][c];
+            inc(pos);
+          end;
+
+        Burbuja(ventana);
+
+        // Obtener el valor máximo y asignarlo
+        M2[i][j][c] := ventana[1];
       end;
 end;
 
@@ -103,12 +162,14 @@ begin
   for i := High(arreglo) downto 1 do
     for j := 1 to i - 1 do
       if arreglo[j] > arreglo[j + 1] then
+
       begin
         temp := arreglo[j];
         arreglo[j] := arreglo[j + 1];
         arreglo[j + 1] := temp;
       end;
 end;
+
 
 end.
 

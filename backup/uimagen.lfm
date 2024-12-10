@@ -138,9 +138,11 @@ object frmImagen: TfrmImagen
       end
       object MenuItem22: TMenuItem
         Caption = 'Mediana Máximo'
+        OnClick = MenuItem22Click
       end
       object MenuItem23: TMenuItem
         Caption = 'Mediana Mínimo'
+        OnClick = MenuItem23Click
       end
     end
     object MenuItem19: TMenuItem
