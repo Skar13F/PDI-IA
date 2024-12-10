@@ -5,10 +5,12 @@ unit uRegionales;
 interface
 
 uses
-  Classes, SysUtils, Math, uVarios;
+  Classes, SysUtils, Math, uVarios, System.Generics.Collections;
 
-  procedure FRMediaA(var M1: Mat3D;  var M2 : Mat3D; mc, nr : Integer; mconv :  M3x3; peso  : real);
+  procedure FRMediaA_gaussiano(var M1: Mat3D;  var M2 : Mat3D; mc, nr : Integer; mconv :  M3x3; peso  : real);
   procedure Llena_MC(var M:M3x3;var f:real);
+
+  procedure FRMediana(var M1: Mat3D;  var M2 : Mat3D; mc, nr : Integer; tamVentana : Integer);
 
 const
   Matmed:M3x3=((1,1,1),
@@ -23,8 +25,8 @@ Matgaus:M3x3=((1,2,1),
 
 implementation
 
-//Aplica filtro  media a la imagen
-procedure FRMediaA(var M1: Mat3D;  var M2 : Mat3D; mc, nr : Integer; mconv :  M3x3; peso  : real);
+//Aplica filtro  media a la imagen también aplica lo mismo para el gaussiano
+procedure FRMediaA_gaussiano(var M1: Mat3D;  var M2 : Mat3D; mc, nr : Integer; mconv :  M3x3; peso  : real);
 var
   c, i, j, alf, bet, delta : Integer;
   sum : real;
@@ -42,6 +44,7 @@ begin
             M2[i][j][c] := Round(peso*sum);
         end;
 end;
+
 
 procedure Llena_MC(var M:M3x3;var f:real);
 var
@@ -61,6 +64,35 @@ begin
         M[i][j]:=Matgaus[i][j]; //copia de la matriz de gaus a M de trabajo
       f:=0.0625; // 1/16
   end;
+end;
+
+//Filtro  mediana para la imagen
+procedure FRMediana(var M1: Mat3D; var M2 : Mat3D; mc, nr : Integer; tamVentana : Integer);
+var
+  c, i, j, x, y, pos: Integer;
+  ventana: array of Integer;
+begin
+  SetLength(M2, mc, nr, 3);
+  for c := 0 to 2 do // Para cada canal de color
+    for j := tamVentana div 2 to nr - 1 - tamVentana div 2 do
+      for i := tamVentana div 2 to mc - 1 - tamVentana div 2 do
+      begin
+        // Inicializar la ventana
+        SetLength(ventana, tamVentana * tamVentana);
+        pos := 0;
+        for y := -tamVentana div 2 to tamVentana div 2 do
+          for x := -tamVentana div 2 to tamVentana div 2 do
+            ventana[pos] := M1[i + x][j + y][c];
+            inc(pos);
+
+        // Ordenar la ventana
+        // Aquí puedes usar cualquier algoritmo de ordenamiento (quicksort, mergesort, etc.)
+        // Por ejemplo, usando la función Sort de la unidad System.Generics.Collections
+        TArray.Sort<Integer>(ventana);
+
+        // Obtener la mediana y asignarla
+        M2[i][j][c] := ventana[(Length(ventana) div 2)];
+      end;
 end;
 
 end.

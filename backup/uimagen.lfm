@@ -117,6 +117,10 @@ object frmImagen: TfrmImagen
         Caption = 'Función  coseno'
         OnClick = mnuCosenoClick
       end
+      object MenuItem20: TMenuItem
+        Caption = 'Exponencial 2'
+        OnClick = MenuItem20Click
+      end
     end
     object MenuItem16: TMenuItem
       Caption = 'O. Regionales'
@@ -127,6 +131,16 @@ object frmImagen: TfrmImagen
       object MenuItem18: TMenuItem
         Caption = 'Gaussiano'
         OnClick = MenuItem18Click
+      end
+      object MenuItem21: TMenuItem
+        Caption = 'Suavizado (mediana)'
+        OnClick = MenuItem21Click
+      end
+      object MenuItem22: TMenuItem
+        Caption = 'Mediana Máximo'
+      end
+      object MenuItem23: TMenuItem
+        Caption = 'Mediana Mínimo'
       end
     end
     object MenuItem19: TMenuItem

@@ -132,6 +132,16 @@ object frmImagen: TfrmImagen
         Caption = 'Gaussiano'
         OnClick = MenuItem18Click
       end
+      object MenuItem21: TMenuItem
+        Caption = 'Suavizado (mediana)'
+        OnClick = MenuItem21Click
+      end
+      object MenuItem22: TMenuItem
+        Caption = 'Mediana Máximo'
+      end
+      object MenuItem23: TMenuItem
+        Caption = 'Mediana Mínimo'
+      end
     end
     object MenuItem19: TMenuItem
       Caption = 'Ayuda'
