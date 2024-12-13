@@ -94,7 +94,7 @@ begin
         Burbuja(ventana);
 
         // Obtener la mediana y asignarla
-        M2[i][j][c] := ventana[Length(ventana) div 2];
+        M2[i][j][c] := ventana[5];
       end;
 end;
 
@@ -151,7 +151,7 @@ begin
         Burbuja(ventana);
 
         // Obtener el valor máximo y asignarlo
-        M2[i][j][c] := ventana[-1];
+        M2[i][j][c] := ventana[1];
       end;
 end;
 

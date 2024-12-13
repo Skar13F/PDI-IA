@@ -1,13 +1,14 @@
 object frmAyuda: TfrmAyuda
-  Left = 1052
-  Height = 553
-  Top = 239
-  Width = 802
+  Left = 532
+  Height = 656
+  Top = 199
+  Width = 1360
   Caption = 'Ayuda'
-  ClientHeight = 553
-  ClientWidth = 802
+  ClientHeight = 656
+  ClientWidth = 1360
   DesignTimePPI = 115
   OnCreate = FormCreate
+  OnShow = FormShow
   LCLVersion = '3.4.0.0'
   object Autor: TLabel
     Left = 16
@@ -38,13 +39,24 @@ object frmAyuda: TfrmAyuda
     Caption = 'Version'
   end
   object btnCerrar: TButton
-    Left = 704
+    Left = 1238
     Height = 30
-    Top = 512
+    Top = 608
     Width = 90
     Caption = 'Cerrar'
     Color = clTeal
     TabOrder = 0
     OnClick = btnCerrarClick
+  end
+  object MemoInfo: TMemo
+    Left = 32
+    Height = 356
+    Top = 216
+    Width = 1296
+    Lines.Strings = (
+      'MemoInfo'
+    )
+    ScrollBars = ssAutoVertical
+    TabOrder = 1
   end
 end

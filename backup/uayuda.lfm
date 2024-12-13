@@ -1,13 +1,14 @@
 object frmAyuda: TfrmAyuda
-  Left = 1052
-  Height = 553
-  Top = 239
-  Width = 802
+  Left = 859
+  Height = 588
+  Top = 196
+  Width = 822
   Caption = 'Ayuda'
-  ClientHeight = 553
-  ClientWidth = 802
+  ClientHeight = 588
+  ClientWidth = 822
   DesignTimePPI = 115
   OnCreate = FormCreate
+  OnShow = FormShow
   LCLVersion = '3.4.0.0'
   object Autor: TLabel
     Left = 16
@@ -46,5 +47,16 @@ object frmAyuda: TfrmAyuda
     Color = clTeal
     TabOrder = 0
     OnClick = btnCerrarClick
+  end
+  object MemoInfo: TMemo
+    Left = 32
+    Height = 356
+    Top = 216
+    Width = 664
+    Lines.Strings = (
+      'MemoInfo'
+    )
+    ScrollBars = ssAutoVertical
+    TabOrder = 1
   end
 end

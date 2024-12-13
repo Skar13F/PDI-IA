@@ -1,5 +1,5 @@
 object frmHistograma: TfrmHistograma
-  Left = 594
+  Left = 2514
   Height = 406
   Top = 247
   Width = 1021

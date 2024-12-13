@@ -443,21 +443,15 @@ end;
 
 // Suavizado media
 procedure TfrmImagen.MenuItem21Click(Sender: TObject);
-var
-  Mc : M3x3;
-  ff : Real;
 begin
-  bCon := 1;
   Iancho:=BM.Width;
   Ialto:=BM.Height;
   BM_MAT(BM, MTR);
-  //Obtiene la matriz de convolución en un entorno de velocidad de 3x3
-  Llena_MC(Mc, ff);
-  FRMediaA_gaussiano(MTR, MRES, Iancho, Ialto, Mc, ff);
+  FRMediana(MTR, MRES, Iancho, Ialto, 3);
   MAT_BM(MRES, BM, Iancho, Ialto);
   MImagen(BM);
 end;
-
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 procedure TfrmImagen.MenuItem22Click(Sender: TObject);
 begin
   Iancho:=BM.Width;
