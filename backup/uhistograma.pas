@@ -204,6 +204,7 @@ begin
     ShowMessage('No se recibió una región válida para el histograma.');
     Exit;
   end;
+  ModoPerfilIntensidad:= True;
 
   // Limpia la ventana del histograma
   imgHisto.Canvas.Brush.Color := clBlack;
@@ -324,12 +325,6 @@ begin
       imgHisto.Canvas.LineTo(Round(j * Han / nr), Hal - Round(intensidadGris[j] * escalaGris));
   end;
 end;
-
-
-
-
-
-
 
 end.
 

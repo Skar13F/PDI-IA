@@ -7,7 +7,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
-  ExtCtrls, uVarios, uHistograma, uPuntuales, uGamma, uCalculadora, uExponencial;
+  ExtCtrls, uVarios, uHistograma, uPuntuales, uGamma, uCalculadora, uExponencial,
+  uRegionales, uAyuda;
 
 type
 
@@ -22,6 +23,16 @@ type
     MenuItem12: TMenuItem;
     MenuItem13: TMenuItem;
     MenuItem14: TMenuItem;
+    MenuItem15: TMenuItem;
+    MenuItem16: TMenuItem;
+    MenuItem17: TMenuItem;
+    MenuItem18: TMenuItem;
+    MenuItem19: TMenuItem;
+    MenuItem20: TMenuItem;
+    MenuItem21: TMenuItem;
+    MenuItem22: TMenuItem;
+    MenuItem23: TMenuItem;
+    mnuCoseno: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     MenuItem4: TMenuItem;
@@ -52,6 +63,14 @@ type
     procedure MenuItem12Click(Sender: TObject);
     procedure MenuItem13Click(Sender: TObject);
     procedure MenuItem14Click(Sender: TObject);
+    procedure MenuItem15Click(Sender: TObject);
+    procedure MenuItem17Click(Sender: TObject);
+    procedure MenuItem18Click(Sender: TObject);
+    procedure MenuItem19Click(Sender: TObject);
+    procedure MenuItem20Click(Sender: TObject);
+    procedure MenuItem21Click(Sender: TObject);
+    procedure MenuItem22Click(Sender: TObject);
+    procedure MenuItem23Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -62,6 +81,7 @@ type
     procedure mnuArchivoGuardarClick(Sender: TObject);
     procedure mnuArchivoSalirClick(Sender: TObject);
     procedure MImagen (B : TBitMap; add : Boolean = true);
+    procedure mnuCosenoClick(Sender: TObject);
     procedure mnuHerrHistogramaClick(Sender: TObject);
     procedure frmHistogramaClosed(Sender: TObject; var CloseAction: TCloseAction);
   private
@@ -359,6 +379,99 @@ begin
   end;
 end;
 
+//Logaritmo
+procedure TfrmImagen.MenuItem15Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  FLogaritmo(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+//Aplica el filtro de media a la imagen
+procedure TfrmImagen.MenuItem17Click(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  FRMediana(MTR, MRES, Iancho, Ialto, 3);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem18Click(Sender: TObject);
+var
+  MG : M3x3;
+  ff: Real;
+begin
+  bCon:=2;//bandera gaussiano
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  //Obtiene la matriz de convolución en un entorno de velocidad de 3x3
+  Llena_MC(Mg, ff);
+  FRMediaA_gaussiano(MTR, MRES, Iancho, Ialto, Mg, ff);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+//Mostrar información de swl programa
+procedure TfrmImagen.MenuItem19Click(Sender: TObject);
+begin
+  frmAyuda.ShowModal;
+end;
+
+procedure TfrmImagen.MenuItem20Click(Sender: TObject);
+var
+  alf:real;
+begin
+  frmExponencial.ShowModal;
+  if frmExponencial.ModalResult=mrOk then
+  begin
+    alf:=frmExponencial.alfa;
+    Iancho:=BM.Width;
+    Ialto:=BM.Height;
+    BM_Mat(BM, MTr);
+    FExponencialOscuro(MTr, MRes, Iancho, Ialto,alf);
+    Mat_BM(MRes,BM, Iancho, Ialto);
+    MImagen(BM);
+  end;
+end;
+
+// Suavizado media
+procedure TfrmImagen.MenuItem21Click(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  FRMediana(MTR, MRES, Iancho, Ialto, 3);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+procedure TfrmImagen.MenuItem22Click(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  FRMedianaMax(MTR, MRES, Iancho, Ialto, 3);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem23Click(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  FRMedianaMin(MTR, MRES, Iancho, Ialto, 3);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
 //Negativo
 procedure TfrmImagen.MenuItem2Click(Sender: TObject);
 begin
@@ -467,6 +580,16 @@ begin
     imagenes[currentImageIndex] := copyBitmap;
 
   end;
+end;
+//Función coseno para oscurecer
+procedure TfrmImagen.mnuCosenoClick(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM, MTR);
+  FCoseno(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM,  Iancho, Ialto);
+  MImagen(BM);
 end;
 
 

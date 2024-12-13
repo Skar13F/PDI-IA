@@ -6,17 +6,30 @@ interface
 uses
   Classes, Graphics, SysUtils, IntfGraphics;
 
+const
+  tam_max = 1;
+
 type
    Mat3D = array of array of array of byte;
    ArrInt = array [0..3, 0..255] of LongWord;
    ArrLam = array [0..255] of byte;
 
+   //uRegionales
+   Mattxd = array[-tam_max .. tam_max, -tam_max .. tam_max] of real;
+   M3x3 = array [-1 .. 1] of array [-1 .. 1] of single;
+   V9 = array [0 .. 8] of Byte;
+
+
    procedure BM_MAT (var B : TBitMap; var M : Mat3D);
    procedure MAT_BM(var M : Mat3D; var B : TBitMap; nc,nr : integer);
    procedure NormalizeRect(var R: TRect);
 
+   function OrdV9(a: V9): Byte;
+
 Var
    BA : TBitMap;
+   bCon : Integer = 0;
+
 implementation
 
 //Pasa la imagen a un matriz
@@ -92,6 +105,22 @@ begin
   end;
 end;
 
+//Ordena vector (9 elementos) por burbuja
+function OrdV9(a:V9):byte; //para media
+var
+  temp:byte;
+  i,j:integer;
+begin
+  for i:=1 to 8 do
+    for j:=0 to 7 do
+     if (a[j]>a[j+1])then
+     begin
+       temp:=a[j];
+       a[j]:=a[j+1];
+       a[j+1]:=temp ;
+     end;
+  OrdV9:=a[4];
+end;
 
 end.
 

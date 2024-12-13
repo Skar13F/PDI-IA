@@ -1,11 +1,11 @@
 object frmImagen: TfrmImagen
-  Left = 1172
+  Left = 2995
   Height = 622
-  Top = 250
-  Width = 619
+  Top = 271
+  Width = 747
   Caption = 'IMAGEN'
   ClientHeight = 622
-  ClientWidth = 619
+  ClientWidth = 747
   DesignTimePPI = 115
   Menu = MainMenu1
   OnCreate = FormCreate
@@ -109,6 +109,45 @@ object frmImagen: TfrmImagen
         Caption = 'Exponencial'
         OnClick = MenuItem14Click
       end
+      object MenuItem15: TMenuItem
+        Caption = 'Logaritmo'
+        OnClick = MenuItem15Click
+      end
+      object mnuCoseno: TMenuItem
+        Caption = 'Función  coseno'
+        OnClick = mnuCosenoClick
+      end
+      object MenuItem20: TMenuItem
+        Caption = 'Exponencial 2'
+        OnClick = MenuItem20Click
+      end
+    end
+    object MenuItem16: TMenuItem
+      Caption = 'O. Regionales'
+      object MenuItem17: TMenuItem
+        Caption = 'Filtro media'
+        OnClick = MenuItem17Click
+      end
+      object MenuItem18: TMenuItem
+        Caption = 'Gaussiano'
+        OnClick = MenuItem18Click
+      end
+      object MenuItem21: TMenuItem
+        Caption = 'Suavizado (mediana)'
+        OnClick = MenuItem21Click
+      end
+      object MenuItem22: TMenuItem
+        Caption = 'Mediana Máximo'
+        OnClick = MenuItem22Click
+      end
+      object MenuItem23: TMenuItem
+        Caption = 'Mediana Mínimo'
+        OnClick = MenuItem23Click
+      end
+    end
+    object MenuItem19: TMenuItem
+      Caption = 'Ayuda'
+      OnClick = MenuItem19Click
     end
   end
   object OpenDialog1: TOpenDialog

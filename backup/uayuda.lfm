@@ -1,0 +1,62 @@
+object frmAyuda: TfrmAyuda
+  Left = 859
+  Height = 588
+  Top = 196
+  Width = 822
+  Caption = 'Ayuda'
+  ClientHeight = 588
+  ClientWidth = 822
+  DesignTimePPI = 115
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '3.4.0.0'
+  object Autor: TLabel
+    Left = 16
+    Height = 30
+    Top = 40
+    Width = 208
+    Caption = 'Autor: Oscar Fuentes'
+  end
+  object Materia: TLabel
+    Left = 16
+    Height = 30
+    Top = 80
+    Width = 288
+    Caption = 'Materia: Inteligencia Artificial'
+  end
+  object Fecha: TLabel
+    Left = 16
+    Height = 30
+    Top = 120
+    Width = 58
+    Caption = 'Fecha'
+  end
+  object Version: TLabel
+    Left = 16
+    Height = 30
+    Top = 160
+    Width = 74
+    Caption = 'Version'
+  end
+  object btnCerrar: TButton
+    Left = 704
+    Height = 30
+    Top = 512
+    Width = 90
+    Caption = 'Cerrar'
+    Color = clTeal
+    TabOrder = 0
+    OnClick = btnCerrarClick
+  end
+  object MemoInfo: TMemo
+    Left = 32
+    Height = 356
+    Top = 216
+    Width = 664
+    Lines.Strings = (
+      'MemoInfo'
+    )
+    ScrollBars = ssAutoVertical
+    TabOrder = 1
+  end
+end
