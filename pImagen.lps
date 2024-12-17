@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="22"/>
-        <UsageCount Value="125"/>
+        <UsageCount Value="126"/>
       </Unit0>
       <Unit1>
         <Filename Value="uimagen.pas"/>
@@ -21,7 +21,7 @@
         <UnitName Value="uImagen"/>
         <TopLine Value="532"/>
         <CursorPos X="3" Y="540"/>
-        <UsageCount Value="125"/>
+        <UsageCount Value="126"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -32,7 +32,7 @@
         <EditorIndex Value="4"/>
         <TopLine Value="13"/>
         <CursorPos X="32" Y="27"/>
-        <UsageCount Value="125"/>
+        <UsageCount Value="126"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -52,7 +52,7 @@
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
-        <UsageCount Value="125"/>
+        <UsageCount Value="126"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -62,7 +62,7 @@
         <UnitName Value="uPuntuales"/>
         <EditorIndex Value="3"/>
         <CursorPos X="86" Y="25"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="116"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -75,7 +75,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="7"/>
         <CursorPos X="13" Y="46"/>
-        <UsageCount Value="102"/>
+        <UsageCount Value="103"/>
       </Unit5>
       <Unit6>
         <Filename Value="uumbral.pas"/>
@@ -83,7 +83,7 @@
         <UnitName Value="uUmbral"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="10" Y="5"/>
-        <UsageCount Value="99"/>
+        <UsageCount Value="100"/>
       </Unit6>
       <Unit7>
         <Filename Value="ucalculadora.pas"/>
@@ -95,7 +95,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="117"/>
         <CursorPos X="16" Y="117"/>
-        <UsageCount Value="79"/>
+        <UsageCount Value="80"/>
       </Unit7>
       <Unit8>
         <Filename Value="uexponencial.pas"/>
@@ -107,7 +107,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="24"/>
         <CursorPos X="50" Y="39"/>
-        <UsageCount Value="77"/>
+        <UsageCount Value="78"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit8>
@@ -118,7 +118,7 @@
         <EditorIndex Value="6"/>
         <TopLine Value="286"/>
         <CursorPos X="59" Y="290"/>
-        <UsageCount Value="75"/>
+        <UsageCount Value="76"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
@@ -128,7 +128,7 @@
         <EditorIndex Value="7"/>
         <TopLine Value="72"/>
         <CursorPos X="53" Y="97"/>
-        <UsageCount Value="55"/>
+        <UsageCount Value="56"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
@@ -142,7 +142,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="78"/>
         <CursorPos X="3" Y="88"/>
-        <UsageCount Value="54"/>
+        <UsageCount Value="55"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit11>
