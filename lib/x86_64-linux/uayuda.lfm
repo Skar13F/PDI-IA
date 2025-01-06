@@ -1,7 +1,7 @@
 object frmAyuda: TfrmAyuda
-  Left = 532
+  Left = 1924
   Height = 656
-  Top = 199
+  Top = 46
   Width = 1360
   Caption = 'Ayuda'
   ClientHeight = 656

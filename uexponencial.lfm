@@ -1,5 +1,5 @@
 object frmExponencial: TfrmExponencial
-  Left = 1230
+  Left = 3150
   Height = 406
   Top = 491
   Width = 690

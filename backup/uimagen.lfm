@@ -1,5 +1,5 @@
 object frmImagen: TfrmImagen
-  Left = 2995
+  Left = 1173
   Height = 622
   Top = 271
   Width = 747

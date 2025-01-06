@@ -1,11 +1,11 @@
 object frmAyuda: TfrmAyuda
-  Left = 859
-  Height = 588
-  Top = 196
-  Width = 822
+  Left = 2452
+  Height = 656
+  Top = 198
+  Width = 1360
   Caption = 'Ayuda'
-  ClientHeight = 588
-  ClientWidth = 822
+  ClientHeight = 656
+  ClientWidth = 1360
   DesignTimePPI = 115
   OnCreate = FormCreate
   OnShow = FormShow
@@ -39,9 +39,9 @@ object frmAyuda: TfrmAyuda
     Caption = 'Version'
   end
   object btnCerrar: TButton
-    Left = 704
+    Left = 1238
     Height = 30
-    Top = 512
+    Top = 608
     Width = 90
     Caption = 'Cerrar'
     Color = clTeal
@@ -52,7 +52,7 @@ object frmAyuda: TfrmAyuda
     Left = 32
     Height = 356
     Top = 216
-    Width = 664
+    Width = 1296
     Lines.Strings = (
       'MemoInfo'
     )

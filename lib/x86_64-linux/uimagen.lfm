@@ -1,10 +1,10 @@
 object frmImagen: TfrmImagen
-  Left = 1173
-  Height = 622
+  Left = 3093
+  Height = 660
   Top = 271
   Width = 747
   Caption = 'IMAGEN'
-  ClientHeight = 622
+  ClientHeight = 660
   ClientWidth = 747
   DesignTimePPI = 115
   Menu = MainMenu1
