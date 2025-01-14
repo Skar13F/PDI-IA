@@ -16,6 +16,11 @@ uses
   procedure FRMedianaMin(var M1: Mat3D; var M2 : Mat3D; mc, nr : Integer; tamVentana : Integer);
   procedure FRMedianaMax(var M1: Mat3D; var M2 : Mat3D; mc, nr : Integer; tamVentana : Integer);
 
+  //bordes
+  procedure FReg_X(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
+  procedure FReg_Y(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
+  procedure FReg_XY(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
+
 const
   Matmed:M3x3=((1,1,1),
               (1,1,1),
@@ -94,7 +99,7 @@ begin
         Burbuja(ventana);
 
         // Obtener la mediana y asignarla
-        M2[i][j][c] := ventana[5];
+        M2[i][j][c] := ventana[Length(ventana) div 2];
       end;
 end;
 
@@ -170,6 +175,59 @@ begin
       end;
 end;
 
+procedure FReg_X(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
+var
+  x, y, c, z: integer;
+begin
+  SetLength(M2, mc, nr, 3);
+  for y := 0 to nr - 1 do
+  begin
+    for x := 0 to mc - 2 do
+    begin
+      for c := 0 to 2 do
+      begin
+        z := abs(M1[x+1][y][c] - M1[x][y][c]);
+        M2[x][y][c] := z;
+      end;
+    end;
+  end;
+end;
 
+procedure FReg_Y(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
+var
+  x, y, c, z: integer;
+begin
+  SetLength(M2, mc, nr, 3);
+  for y := 0 to nr - 2 do
+  begin
+    for x := 0 to mc - 1 do
+    begin
+      for c := 0 to 2 do
+      begin
+        z := abs(M1[x][y+1][c] - M1[x][y][c]);
+        M2[x][y][c] := z;
+      end;
+    end;
+  end;
+end;
+
+procedure FReg_XY(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
+var
+  x, y, c, z1, z2: integer;
+begin
+  SetLength(M2, mc, nr, 3);
+  for y := 0 to nr - 2 do
+  begin
+    for x := 0 to mc - 2 do
+    begin
+      for c := 0 to 2 do
+      begin
+        z1 := abs(M1[x+1][y][c] - M1[x][y][c]);
+        z2 := abs(M1[x][y+1][c] - M1[x][y][c]);
+        M2[x][y][c] := z1;
+      end;
+    end;
+  end;
+end;
 end.
 

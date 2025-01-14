@@ -32,6 +32,10 @@ type
     MenuItem21: TMenuItem;
     MenuItem22: TMenuItem;
     MenuItem23: TMenuItem;
+    MenuItem24: TMenuItem;
+    MenuItem25: TMenuItem;
+    MenuItem26: TMenuItem;
+    MenuItem27: TMenuItem;
     mnuCoseno: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
@@ -71,6 +75,9 @@ type
     procedure MenuItem21Click(Sender: TObject);
     procedure MenuItem22Click(Sender: TObject);
     procedure MenuItem23Click(Sender: TObject);
+    procedure MenuItem25Click(Sender: TObject);
+    procedure MenuItem26Click(Sender: TObject);
+    procedure MenuItem27Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
@@ -468,6 +475,36 @@ begin
   Ialto:=BM.Height;
   BM_MAT(BM, MTR);
   FRMedianaMin(MTR, MRES, Iancho, Ialto, 3);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem25Click(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  FReg_X(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem26Click(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  FReg_Y(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem27Click(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  FReg_XY(MTR, MRES, Iancho, Ialto);
   MAT_BM(MRES, BM, Iancho, Ialto);
   MImagen(BM);
 end;

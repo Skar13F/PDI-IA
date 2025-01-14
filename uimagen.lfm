@@ -144,6 +144,21 @@ object frmImagen: TfrmImagen
         Caption = 'Mediana Mínimo'
         OnClick = MenuItem23Click
       end
+      object MenuItem24: TMenuItem
+        Caption = 'Bordes'
+        object MenuItem25: TMenuItem
+          Caption = 'Bordes X'
+          OnClick = MenuItem25Click
+        end
+        object MenuItem26: TMenuItem
+          Caption = 'Bordes Y'
+          OnClick = MenuItem26Click
+        end
+        object MenuItem27: TMenuItem
+          Caption = 'Bordes Max'
+          OnClick = MenuItem27Click
+        end
+      end
     end
     object MenuItem19: TMenuItem
       Caption = 'Ayuda'

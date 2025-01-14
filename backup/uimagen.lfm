@@ -1,10 +1,10 @@
 object frmImagen: TfrmImagen
-  Left = 1173
-  Height = 622
+  Left = 3093
+  Height = 660
   Top = 271
   Width = 747
   Caption = 'IMAGEN'
-  ClientHeight = 622
+  ClientHeight = 660
   ClientWidth = 747
   DesignTimePPI = 115
   Menu = MainMenu1
@@ -143,6 +143,20 @@ object frmImagen: TfrmImagen
       object MenuItem23: TMenuItem
         Caption = 'Mediana Mínimo'
         OnClick = MenuItem23Click
+      end
+      object MenuItem24: TMenuItem
+        Caption = 'Bordes'
+        object MenuItem25: TMenuItem
+          Caption = 'Bordes X'
+          OnClick = MenuItem25Click
+        end
+        object MenuItem26: TMenuItem
+          Caption = 'Bordes Y'
+          OnClick = MenuItem26Click
+        end
+        object MenuItem27: TMenuItem
+          Caption = 'Bordes Max'
+        end
       end
     end
     object MenuItem19: TMenuItem
