@@ -39,7 +39,7 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="12">
+    <Units Count="13">
       <Unit0>
         <Filename Value="pImagen.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -117,6 +117,11 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAyuda"/>
       </Unit11>
+      <Unit12>
+        <Filename Value="ulaplacianos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uLaplacianos"/>
+      </Unit12>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

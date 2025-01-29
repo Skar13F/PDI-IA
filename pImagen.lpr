@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, uImagen, uVarios, uHistograma, uPuntuales, uGamma, uUmbral, 
-uCalculadora, uExponencial, uOpCalculadora, uRegionales, uAyuda
+uCalculadora, uExponencial, uOpCalculadora, uRegionales, uAyuda, uLaplacianos
   { you can add units after this };
 
 {$R *.res}

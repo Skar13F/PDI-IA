@@ -7,7 +7,6 @@ interface
 uses
   Classes, SysUtils, Math, uVarios, Dialogs;
 
-  procedure FRMediaA_gaussiano(var M1: Mat3D;  var M2 : Mat3D; mc, nr : Integer; mconv :  M3x3; peso  : real);
   procedure Llena_MC(var M:M3x3;var f:real);
 
   procedure FRMediana(var M1: Mat3D;  var M2 : Mat3D; mc, nr : Integer; tamVentana : Integer);
@@ -21,50 +20,55 @@ uses
   procedure FReg_Y(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
   procedure FReg_XY(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer);
 
+  procedure FBordes(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer; mconv: M3x3; peso: real);
+
 const
   Matmed:M3x3=((1,1,1),
-              (1,1,1),
-              (1,1,1));
+               (1,1,1),
+               (1,1,1));
 
-Matgaus:M3x3=((1,2,1),
-              (2,4,2),
-             (1,2,1));
+  Matgaus:M3x3=((1,2,1),
+                (2,4,2),
+                (1,2,1));
+
+  MatSOBx:M3x3=((1,0,-1),
+                (2,0,-2),
+                (1,0,-1));
+
+  MatSOBy:M3x3=((-1,-2,-1),
+                (0,0,0),
+                (1,2,1));
+
+  matPrewittX: M3x3 = ((-1, 0, 1),
+                       (-1, 0, 1),
+                       (-1, 0, 1));
+
+  matPrewittY: M3x3 = ((1, 1, 1),
+                       ( 0,  0,  0),
+                       (-1, -1, -1));
+
+  matFreix: M3x3 = ((-1, 0, 1),
+                    (-sqrt(2), 0, sqrt(2)),
+                    (-1, 0, 1));
+
+  matFreiy: M3x3 = ((1, sqrt(2), 1),
+                    (0, 0, 0),
+                    (-1, -sqrt(2), -1));
 
 
 
 implementation
 
-//Aplica filtro  media a la imagen también aplica lo mismo para el gaussiano
-procedure FRMediaA_gaussiano(var M1: Mat3D;  var M2 : Mat3D; mc, nr : Integer; mconv :  M3x3; peso  : real);
+procedure Llena_MC(var M : M3x3; var f : real);
 var
-  c, i, j, alf, bet, delta : Integer;
-  sum : real;
+  i , j : integer;
 begin
-  delta:=1;
-  SetLength(M2, mc, nr, 3);
-  for c :=0 to 2 do
-    for j:= delta to nr -1 -delta do
-      for i:=delta to mc -1 -delta do
-        begin
-          sum:=0.0;
-          for alf:=-delta to delta do
-            for bet:=-delta to delta do
-              sum+=M1[i+alf][j+bet][c] * mconv[alf][bet];
-            M2[i][j][c] := Round(peso*sum);
-        end;
-end;
-
-
-procedure Llena_MC(var M:M3x3;var f:real);
-var
-  i,j:integer;
-begin
-  if bCon=1 then //datos del kernel media
+  if bCon = 1 then //datos del kernel media
   begin
-    for j:=-1 to 1 do
-    for i:=-1 to 1 do
-    M[i][j]:=Matmed[i][j]; //copia de la matriz media a M de trabajo
-    f:=1/9; // 1/9
+    for j := -1 to 1 do
+      for i := -1 to 1 do
+        M[i][j] := Matmed[i][j]; //copia de la matriz media a M de trabajo
+      f:=1/9; // 1/9
   end
   else if bCon =2 then //datos del kernel de gaus
   begin
@@ -72,6 +76,56 @@ begin
       for i:=-1 to 1 do
         M[i][j]:=Matgaus[i][j]; //copia de la matriz de gaus a M de trabajo
       f:=0.0625; // 1/16
+  end
+  else if bCon=3 then
+  begin
+    for j:=-1 to 1 do
+      for i:=-1 to 1 do
+        M[i][j]:=MatSOBx[i][j];
+      f:=1;
+  end
+  else if bCon=4 then
+  begin
+    for j:=-1 to 1 do
+    for i:=-1 to 1 do
+      M[i][j]:=MatSOBy[i][j];
+    f:=1;
+  end
+  else if bCon = 5 then // Sobel completo (suma de X e Y)
+  begin
+    for j := -1 to 1 do
+      for i := -1 to 1 do
+        M[i][j] := MatSOBx[i][j] + MatSOBy[i][j]; // Suma de matrices Sobel X e Y
+      f := 1;
+  end
+  else if bCon = 6 then // Prewitt Y
+    begin
+    for j := -1 to 1 do
+      for i := -1 to 1 do
+        M[i][j] := matPrewittX[i][j];
+    f := 1;
+  end
+  else if bCon = 7 then // Prewitt Y
+  begin
+    for j := -1 to 1 do
+      for i := -1 to 1 do
+        M[i][j] := matPrewittY[i][j];
+    f := 1;
+  end
+
+  else if bCon = 8 then // Frei-Chen X
+  begin
+    for j := -1 to 1 do
+      for i := -1 to 1 do
+        M[i][j] := matFreix[i][j];
+    f := 1;
+  end
+  else if bCon = 9 then // Frei-Chen Y
+  begin
+    for j := -1 to 1 do
+      for i := -1 to 1 do
+        M[i][j] := matFreiy[i][j];
+    f := 1;
   end;
 end;
 
@@ -229,5 +283,27 @@ begin
     end;
   end;
 end;
+
+//Sobel, prewitt, frei chen
+procedure FBordes(var M1: Mat3D; var M2: Mat3D; mc, nr: Integer; mconv: M3x3; peso: real);
+var
+  c, i, j, alf, bet, delta : integer;
+  sum : real;
+begin
+  delta := 1;
+  SetLength(M2, mc, nr, 3);
+
+  for c := 0 to 2 do
+    for j := delta to nr -1 - delta do
+      for i := delta to mc -1 - delta do
+      begin
+        sum := 0.0;
+        for alf := -delta to delta do
+          for bet := -delta to delta do
+            sum := sum + M1[i + alf][j + bet][c] * mconv[alf][bet];
+        M2[i][j][c]:= round(peso * sum);
+      end;
+end;
+
 end.
 

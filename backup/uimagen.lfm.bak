@@ -1,35 +1,40 @@
 object frmImagen: TfrmImagen
-  Left = 275
-  Height = 376
-  Top = 168
-  Width = 434
+  Left = 2787
+  Height = 736
+  Top = 317
+  Width = 891
   Caption = 'IMAGEN'
-  ClientHeight = 356
-  ClientWidth = 434
+  ClientHeight = 736
+  ClientWidth = 891
+  DesignTimePPI = 115
   Menu = MainMenu1
   OnCreate = FormCreate
-  LCLVersion = '1.4.0.4'
+  LCLVersion = '3.4.0.0'
   object ScrollBox1: TScrollBox
-    Left = 8
-    Height = 320
-    Top = 8
-    Width = 347
-    HorzScrollBar.Page = 288
-    VertScrollBar.Page = 264
-    ClientHeight = 316
-    ClientWidth = 343
+    Left = 10
+    Height = 426
+    Top = 10
+    Width = 466
+    HorzScrollBar.Page = 451
+    VertScrollBar.Page = 411
+    ClientHeight = 411
+    ClientWidth = 451
     TabOrder = 0
     object Image1: TImage
       Left = 0
-      Height = 264
+      Height = 432
       Top = 0
-      Width = 288
-      AutoSize = True
+      Width = 456
+      OnClick = Image1Click
+      OnMouseDown = Image1MouseDown
+      OnMouseMove = Image1MouseMove
+      OnMouseUp = Image1MouseUp
+      ParentShowHint = False
     end
   end
   object MainMenu1: TMainMenu
-    left = 384
-    top = 296
+    Left = 528
+    Top = 336
     object mnuArchivo: TMenuItem
       Caption = 'Archivo'
       object mnuArchivoAbrir: TMenuItem
@@ -38,10 +43,29 @@ object frmImagen: TfrmImagen
       end
       object mnuArchivoGuardar: TMenuItem
         Caption = 'Guardar'
+        OnClick = mnuArchivoGuardarClick
       end
       object mnuArchivoSalir: TMenuItem
         Caption = 'Salir'
         OnClick = mnuArchivoSalirClick
+      end
+    end
+    object MenuItem5: TMenuItem
+      Caption = 'Editar'
+      object MenuItem10: TMenuItem
+        Caption = 'Deshacer'
+        OnClick = MenuItem10Click
+      end
+      object MenuItem11: TMenuItem
+        Caption = 'Rehacer'
+        OnClick = MenuItem11Click
+      end
+    end
+    object MenuItem6: TMenuItem
+      Caption = 'Ver'
+      object MenuItem7: TMenuItem
+        Caption = 'Redimensionar'
+        OnClick = MenuItem7Click
       end
     end
     object mnuHerramientas: TMenuItem
@@ -50,10 +74,142 @@ object frmImagen: TfrmImagen
         Caption = 'Histograma'
         OnClick = mnuHerrHistogramaClick
       end
+      object MenuItem12: TMenuItem
+        Caption = 'Calculadora'
+        OnClick = MenuItem12Click
+      end
+    end
+    object MenuItem1: TMenuItem
+      Caption = 'O. Puntuales'
+      object MenuItem2: TMenuItem
+        Caption = 'Negativo'
+        OnClick = MenuItem2Click
+      end
+      object MenuItem3: TMenuItem
+        Caption = 'Gris'
+        OnClick = MenuItem3Click
+      end
+      object MenuItem4: TMenuItem
+        Caption = 'RGB a gris'
+        OnClick = MenuItem4Click
+      end
+      object MenuItem8: TMenuItem
+        Caption = 'Filtro gama'
+        OnClick = MenuItem8Click
+      end
+      object MenuItem9: TMenuItem
+        Caption = 'Umbral'
+        OnClick = MenuItem9Click
+      end
+      object MenuItem13: TMenuItem
+        Caption = 'Función seno'
+        OnClick = MenuItem13Click
+      end
+      object MenuItem14: TMenuItem
+        Caption = 'Exponencial'
+        OnClick = MenuItem14Click
+      end
+      object MenuItem15: TMenuItem
+        Caption = 'Logaritmo'
+        OnClick = MenuItem15Click
+      end
+      object mnuCoseno: TMenuItem
+        Caption = 'Función  coseno'
+        OnClick = mnuCosenoClick
+      end
+      object MenuItem20: TMenuItem
+        Caption = 'Exponencial 2'
+        OnClick = MenuItem20Click
+      end
+    end
+    object MenuItem16: TMenuItem
+      Caption = 'O. Regionales'
+      object MenuItem17: TMenuItem
+        Caption = 'Filtro media'
+        OnClick = MenuItem17Click
+      end
+      object MenuItem18: TMenuItem
+        Caption = 'Gaussiano'
+        OnClick = MenuItem18Click
+      end
+      object MenuItem21: TMenuItem
+        Caption = 'Suavizado (mediana)'
+        OnClick = MenuItem21Click
+      end
+      object MenuItem22: TMenuItem
+        Caption = 'Mediana Máximo'
+        OnClick = MenuItem22Click
+      end
+      object MenuItem23: TMenuItem
+        Caption = 'Mediana Mínimo'
+        OnClick = MenuItem23Click
+      end
+      object MenuItem24: TMenuItem
+        Caption = 'Bordes'
+        object MenuItem25: TMenuItem
+          Caption = 'Bordes X'
+          OnClick = MenuItem25Click
+        end
+        object MenuItem26: TMenuItem
+          Caption = 'Bordes Y'
+          OnClick = MenuItem26Click
+        end
+        object MenuItem27: TMenuItem
+          Caption = 'Bordes Max'
+          OnClick = MenuItem27Click
+        end
+      end
+    end
+    object MenuItem28: TMenuItem
+      Caption = 'Laplacianos'
+      object MenuItem29: TMenuItem
+        Caption = 'LAPL1'
+        OnClick = MenuItem29Click
+      end
+      object MenuItem30: TMenuItem
+        Caption = 'LAPL2'
+        OnClick = MenuItem30Click
+      end
+      object MenuItem31: TMenuItem
+        Caption = 'LAPL3'
+        OnClick = MenuItem31Click
+      end
+      object MenuItem32: TMenuItem
+        Caption = 'LAPL4'
+        OnClick = MenuItem32Click
+      end
+      object MenuItem33: TMenuItem
+        Caption = 'LAPL5'
+        OnClick = MenuItem33Click
+      end
+      object MenuItem34: TMenuItem
+        Caption = 'LAPL6'
+        OnClick = MenuItem34Click
+      end
+      object MenuItem35: TMenuItem
+        Caption = 'Diagonal'
+        OnClick = MenuItem35Click
+      end
+      object MenuItem36: TMenuItem
+        Caption = 'Horizontal'
+        OnClick = MenuItem36Click
+      end
+      object MenuItem37: TMenuItem
+        Caption = 'Vertical'
+        OnClick = MenuItem37Click
+      end
+    end
+    object MenuItem19: TMenuItem
+      Caption = 'Ayuda'
+      OnClick = MenuItem19Click
     end
   end
   object OpenDialog1: TOpenDialog
-    left = 384
-    top = 232
+    Left = 528
+    Top = 259
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 528
+    Top = 192
   end
 end

@@ -1,11 +1,11 @@
 object frmImagen: TfrmImagen
-  Left = 3093
-  Height = 660
-  Top = 271
-  Width = 747
+  Left = 1029
+  Height = 736
+  Top = 267
+  Width = 891
   Caption = 'IMAGEN'
-  ClientHeight = 660
-  ClientWidth = 747
+  ClientHeight = 736
+  ClientWidth = 891
   DesignTimePPI = 115
   Menu = MainMenu1
   OnCreate = FormCreate
@@ -158,6 +158,73 @@ object frmImagen: TfrmImagen
           Caption = 'Bordes Max'
           OnClick = MenuItem27Click
         end
+      end
+      object MenuItem38: TMenuItem
+        Caption = 'Sobel vertical'
+        OnClick = MenuItem38Click
+      end
+      object MenuItem39: TMenuItem
+        Caption = 'Sobel horizontal'
+        OnClick = MenuItem39Click
+      end
+      object MenuItem40: TMenuItem
+        Caption = 'Sobel'
+        OnClick = MenuItem40Click
+      end
+      object MenuItem41: TMenuItem
+        Caption = 'Prewitt vertical'
+        OnClick = MenuItem41Click
+      end
+      object MenuItem42: TMenuItem
+        Caption = 'Prewitt horizontal'
+        OnClick = MenuItem42Click
+      end
+      object MenuItem43: TMenuItem
+        Caption = 'Frei chen V'
+        OnClick = MenuItem43Click
+      end
+      object MenuItem44: TMenuItem
+        Caption = 'Frei chen H'
+        OnClick = MenuItem44Click
+      end
+    end
+    object MenuItem28: TMenuItem
+      Caption = 'Laplacianos'
+      object MenuItem29: TMenuItem
+        Caption = 'LAPL1'
+        OnClick = MenuItem29Click
+      end
+      object MenuItem30: TMenuItem
+        Caption = 'LAPL2'
+        OnClick = MenuItem30Click
+      end
+      object MenuItem31: TMenuItem
+        Caption = 'LAPL3'
+        OnClick = MenuItem31Click
+      end
+      object MenuItem32: TMenuItem
+        Caption = 'LAPL4'
+        OnClick = MenuItem32Click
+      end
+      object MenuItem33: TMenuItem
+        Caption = 'LAPL5'
+        OnClick = MenuItem33Click
+      end
+      object MenuItem34: TMenuItem
+        Caption = 'LAPL6'
+        OnClick = MenuItem34Click
+      end
+      object MenuItem35: TMenuItem
+        Caption = 'Diagonal'
+        OnClick = MenuItem35Click
+      end
+      object MenuItem36: TMenuItem
+        Caption = 'Horizontal'
+        OnClick = MenuItem36Click
+      end
+      object MenuItem37: TMenuItem
+        Caption = 'Vertical'
+        OnClick = MenuItem37Click
       end
     end
     object MenuItem19: TMenuItem

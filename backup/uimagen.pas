@@ -8,7 +8,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
   ExtCtrls, uVarios, uHistograma, uPuntuales, uGamma, uCalculadora, uExponencial,
-  uRegionales, uAyuda;
+  uRegionales, uAyuda, uLaplacianos;
 
 type
 
@@ -36,6 +36,23 @@ type
     MenuItem25: TMenuItem;
     MenuItem26: TMenuItem;
     MenuItem27: TMenuItem;
+    MenuItem28: TMenuItem;
+    MenuItem29: TMenuItem;
+    MenuItem30: TMenuItem;
+    MenuItem31: TMenuItem;
+    MenuItem32: TMenuItem;
+    MenuItem33: TMenuItem;
+    MenuItem34: TMenuItem;
+    MenuItem35: TMenuItem;
+    MenuItem36: TMenuItem;
+    MenuItem37: TMenuItem;
+    MenuItem38: TMenuItem;
+    MenuItem39: TMenuItem;
+    MenuItem40: TMenuItem;
+    MenuItem41: TMenuItem;
+    MenuItem42: TMenuItem;
+    MenuItem43: TMenuItem;
+    MenuItem44: TMenuItem;
     mnuCoseno: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
@@ -77,8 +94,25 @@ type
     procedure MenuItem23Click(Sender: TObject);
     procedure MenuItem25Click(Sender: TObject);
     procedure MenuItem26Click(Sender: TObject);
+    procedure MenuItem27Click(Sender: TObject);
+    procedure MenuItem29Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
+    procedure MenuItem30Click(Sender: TObject);
+    procedure MenuItem31Click(Sender: TObject);
+    procedure MenuItem32Click(Sender: TObject);
+    procedure MenuItem33Click(Sender: TObject);
+    procedure MenuItem34Click(Sender: TObject);
+    procedure MenuItem35Click(Sender: TObject);
+    procedure MenuItem36Click(Sender: TObject);
+    procedure MenuItem37Click(Sender: TObject);
+    procedure MenuItem38Click(Sender: TObject);
+    procedure MenuItem39Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
+    procedure MenuItem40Click(Sender: TObject);
+    procedure MenuItem41Click(Sender: TObject);
+    procedure MenuItem42Click(Sender: TObject);
+    procedure MenuItem43Click(Sender: TObject);
+    procedure MenuItem44Click(Sender: TObject);
     procedure MenuItem4Click(Sender: TObject);
     procedure MenuItem7Click(Sender: TObject);
     procedure MenuItem8Click(Sender: TObject);
@@ -498,6 +532,27 @@ begin
   MImagen(BM);
 end;
 
+procedure TfrmImagen.MenuItem27Click(Sender: TObject);
+begin
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  FReg_XY(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem29Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho := BM.Width;
+  Ialto := BM.Height;
+  BM_MAT(BM, MTR);
+  FiltroLapl1(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
 //Negativo
 procedure TfrmImagen.MenuItem2Click(Sender: TObject);
 begin
@@ -509,6 +564,125 @@ begin
   MAT_BM(MRES, BM, Iancho, Ialto);
   MImagen(BM);
 end;
+
+procedure TfrmImagen.MenuItem30Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho := BM.Width;
+  Ialto := BM.Height;
+  BM_MAT(BM, MTR);
+  FiltroLapl2(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem31Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho := BM.Width;
+  Ialto := BM.Height;
+  BM_MAT(BM, MTR);
+  FiltroLapl3(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem32Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho := BM.Width;
+  Ialto := BM.Height;
+  BM_MAT(BM, MTR);
+  FiltroLapl4(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem33Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho := BM.Width;
+  Ialto := BM.Height;
+  BM_MAT(BM, MTR);
+  FiltroLapl5(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem34Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho := BM.Width;
+  Ialto := BM.Height;
+  BM_MAT(BM, MTR);
+  FiltroLapl6(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem35Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho := BM.Width;
+  Ialto := BM.Height;
+  BM_MAT(BM, MTR);
+  FiltroLaplDiagonal(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem36Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho := BM.Width;
+  Ialto := BM.Height;
+  BM_MAT(BM, MTR);
+  FiltroLaplHorizontal(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem37Click(Sender: TObject);
+begin
+  BM.Assign(imagenes[currentImageIndex]);
+  Iancho := BM.Width;
+  Ialto := BM.Height;
+  BM_MAT(BM, MTR);
+  FiltroLaplVertical(MTR, MRES, Iancho, Ialto);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+//******************************************************************************
+procedure TfrmImagen.MenuItem38Click(Sender: TObject);
+var
+  MG:M3x3;
+  ff:real;
+begin
+  bCon:=3;
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  Llena_MC(MG,ff);
+  FBordes(MTR, MRES, Iancho, Ialto,MG,ff);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem39Click(Sender: TObject);
+var
+  MG:M3x3;
+  ff:real;
+begin
+  bCon:=4;
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  Llena_MC(MG,ff);
+  FBordes(MTR, MRES, Iancho, Ialto,MG,ff);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
 //Gris
 procedure TfrmImagen.MenuItem3Click(Sender: TObject);
 begin
@@ -520,6 +694,82 @@ begin
   MAT_BM(MRES, BM, Iancho, Ialto);
   MImagen(BM);
 end;
+
+procedure TfrmImagen.MenuItem40Click(Sender: TObject);
+var
+  MG:M3x3;
+  ff:real;
+begin
+  bCon:=5;
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  Llena_MC(MG,ff);
+  FBordes(MTR, MRES, Iancho, Ialto,MG,ff);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem41Click(Sender: TObject);
+var
+  MG:M3x3;
+  ff:real;
+begin
+  bCon:=6;
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  Llena_MC(MG,ff);
+  FBordes(MTR, MRES, Iancho, Ialto,MG,ff);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem42Click(Sender: TObject);
+var
+  MG:M3x3;
+  ff:real;
+begin
+  bCon:=7;
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  Llena_MC(MG,ff);
+  FBordes(MTR, MRES, Iancho, Ialto,MG,ff);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem43Click(Sender: TObject);
+var
+  MG:M3x3;
+  ff:real;
+begin
+  bCon:=8;
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  Llena_MC(MG,ff);
+  FBordes(MTR, MRES, Iancho, Ialto,MG,ff);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
+procedure TfrmImagen.MenuItem44Click(Sender: TObject);
+var
+  MG:M3x3;
+  ff:real;
+begin
+  bCon:=9;
+  Iancho:=BM.Width;
+  Ialto:=BM.Height;
+  BM_MAT(BM,MTR);
+  Llena_MC(MG,ff);
+  FBordes(MTR, MRES, Iancho, Ialto,MG,ff);
+  MAT_BM(MRES, BM, Iancho, Ialto);
+  MImagen(BM);
+end;
+
 //Gris RGB
 procedure TfrmImagen.MenuItem4Click(Sender: TObject);
 begin

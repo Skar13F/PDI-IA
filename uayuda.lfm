@@ -1,5 +1,5 @@
 object frmAyuda: TfrmAyuda
-  Left = 1924
+  Left = 4
   Height = 656
   Top = 46
   Width = 1360
